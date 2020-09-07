@@ -1,3 +1,6 @@
+
+# rm(list=ls())
+
 #
 # This is the user-interface definition of a Shiny web application. You can
 # run the application by clicking 'Run App' above.
@@ -8,26 +11,21 @@
 #
 
 library(shiny)
+library(networkD3)
 
-# Define UI for application that draws a histogram
-shinyUI(fluidPage(
-
-    # Application title
-    titlePanel("Old Faithful Geyser Data"),
-
-    # Sidebar with a slider input for number of bins
+shinyUI(fluidPage( 
+    
+    titlePanel("Synthises of AES Workbook"), 
+    
     sidebarLayout(
         sidebarPanel(
-            sliderInput("bins",
-                        "Number of bins:",
-                        min = 1,
-                        max = 50,
-                        value = 30)
+            sliderInput("opacity",
+                        "Opacity",
+                        min = 0.1,
+                        max = 1,
+                        value = 0.4)
         ),
-
-        # Show a plot of the generated distribution
         mainPanel(
-            plotOutput("distPlot")
+            forceNetworkOutput(outputId = "net")
         )
-    )
-))
+    )))

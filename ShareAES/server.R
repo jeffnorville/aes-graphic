@@ -1,3 +1,4 @@
+
 #
 # This is the server logic of a Shiny web application. You can run the
 # application by clicking 'Run App' above.
@@ -8,34 +9,50 @@
 #
 
 library(shiny)
+library(readxl)
+library(networkD3)
 
 
+# D1_1_List_AES <- read_excel("~/QuickStart/D1.1_List_of_AES_English.xlsm", 
+#                             sheet = "database", col_types = c("skip","numeric", 
+#                                                               "text", "text", "text", "text", "text", 
+#                                                               "text", "text", "text", "text", "text", 
+#                                                               "text", "text", "text", "skip", "numeric", 
+#                                                               "text", "text", "text", "skip"))
+# 
+# src <- D1_1_List_AES$`Solution in common`
+# tgt <- D1_1_List_AES$`Common challenge impacted`
+# networkAES <- data.frame(src, tgt)
+# networkAES <- na.omit(networkAES)
 
-D1_1_List_AES <- read_excel("~/QuickStart/D1.1_List_of_AES_English.xlsm", 
-                            sheet = "database", col_types = c("skip","numeric", 
-                                                              "text", "text", "text", "text", "text", 
-                                                              "text", "text", "text", "text", "text", 
-                                                              "text", "text", "text", "skip", "numeric", 
-                                                              "text", "text", "text", "skip"))
 
-src <- D1_1_List_AES$`Solution in common`
-tgt <- D1_1_List_AES$`Common challenge impacted`
-networkAES <- data.frame(src, tgt)
-networkAES <- na.omit(networkAES)
-# simpleNetwork(networkAES)
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
+    
+    # Load data
+    data(MisLinks)
+    data(MisNodes)      
 
-    output$distPlot <- renderPlot({
-
-        # generate bins based on input$bins from ui.R
-        x    <- faithful[, 2]
-        bins <- seq(min(x), max(x), length.out = input$bins + 1)
-
-        # draw the histogram with the specified number of bins
-        hist(x, breaks = bins, col = 'darkgray', border = 'white')
-
-    })
+    # output$aesNetworkDiagram <- renderForceNetwork({
+    #     simpleNetwork(networkAES)
+        
+    output$net <- renderForceNetwork(forceNetwork(
+        Links  = MisLinks, Nodes   = MisNodes,
+        Source = "source", Target  = "target",
+        Value  = "value",  NodeID  = "name", zoom = TRUE, 
+        Group  = "group",  opacity = input$opacity))
+        
+    
+    # output$distPlot <- renderPlot({
+    # 
+    #     # generate bins based on input$bins from ui.R
+    #     x    <- faithful[, 2]
+    #     bins <- seq(min(x), max(x), length.out = input$bins + 1)
+    # 
+    #     # draw the histogram with the specified number of bins
+    #     hist(x, breaks = bins, col = 'darkgray', border = 'white')
+    # 
+    # })
 
 })
