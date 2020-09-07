@@ -7,6 +7,8 @@ target <- c("B", "C", "D", "J", "E", "F", "G", "H", "I")
 networkData <- data.frame(src, target)
 simpleNetwork(networkData)
 
+summary(networkData)
+
 # with sans-serif 
 simpleNetwork(networkData, fontFamily = "sans-serif")
 
