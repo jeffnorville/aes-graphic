@@ -1,11 +1,12 @@
 library(readxl)
+library(networkD3)
 
 ### grab changes to D1.1 Table database tab
 
 #db <- read_xlsx('C:/Users/Norville/Documents/QuickStart/D1.1_List_of_AES_English.xlsm')
 
 D1_1_List_AES <- read_excel("~/QuickStart/D1.1_List_of_AES_English.xlsm", 
-                                       sheet = "database", col_types = c("skip","numeric", 
+                                       sheet = "database", col_types = c("skip","numeric","text", 
                                            "text", "text", "text", "text", "text", 
                                            "text", "text", "text", "text", "text", 
                                            "text", "text", "text", "skip", "numeric", 
