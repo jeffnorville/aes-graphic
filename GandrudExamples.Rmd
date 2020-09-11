@@ -1,9 +1,9 @@
 ---
 title: "R Markdown networkD3"
 output:
-  pdf_document:
-    toc: yes
   html_document:
+    toc: yes
+  pdf_document:
     toc: yes
 ---
 
