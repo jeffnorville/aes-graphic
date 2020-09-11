@@ -27,7 +27,9 @@ rm(tgt)
 
 src <- D1_1_List_AES$`Solution in common`
 tgt <- D1_1_List_AES$`Common challenge impacted`
-networkAES <- data.frame(src, tgt)
+bq <- D1_1_List_AES$BQ
+
+networkAES <- data.frame(src, tgt, bq)
 networkAES <- na.omit(networkAES)
 simpleNetwork(networkAES)
 
