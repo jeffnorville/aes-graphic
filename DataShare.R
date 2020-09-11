@@ -6,13 +6,23 @@ library(networkD3)
 #db <- read_xlsx('C:/Users/Norville/Documents/QuickStart/D1.1_List_of_AES_English.xlsm')
 
 
+yed_test <- read_excel("C:/Users/Norville/OneDrive/Documents/INRA-2020/17_sept_2020/yed_test.xlsx", 
+                       sheet = "Feuil2", skip = 1)
 
 yed_test <- read_excel("C:/Users/Jeff Norville/OneDrive/Documents/INRA-2020/17_sept_2020/yed_test.xlsx", 
                        sheet = "Feuil2", skip = 1)
 
+
+
 src <- yed_test$`Common challenge impacted...17`
 tgt <- yed_test$`Solution in common...18`
 val <- yed_test$BQ
+networkAES <- data.frame(src, tgt, val)
+networkAES <- na.omit(networkAES)
+simpleNetwork(networkAES, zoom=TRUE)
+
+
+
 
 D1_1_List_AES <- read_excel("~/QuickStart/D1.1_List_of_AES_English.xlsm", 
                                        sheet = "database", col_types = c("skip","numeric","text", 

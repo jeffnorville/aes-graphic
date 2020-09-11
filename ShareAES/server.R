@@ -34,15 +34,31 @@ shinyServer(function(input, output) {
     data(MisLinks)
     data(MisNodes)      
 
-    # output$aesNetworkDiagram <- renderForceNetwork({
-    #     simpleNetwork(networkAES)
-        
+    yed_test <- read_excel("C:/Users/Norville/OneDrive/Documents/INRA-2020/17_sept_2020/yed_test.xlsx", 
+                           sheet = "Feuil2", skip = 1)
+    
+    # yed_test <- read_excel("C:/Users/Jeff Norville/OneDrive/Documents/INRA-2020/17_sept_2020/yed_test.xlsx", 
+    #                        sheet = "Feuil2", skip = 1)
+
+    src <- yed_test$`Common challenge impacted...17`
+    tgt <- yed_test$`Solution in common...18`
+    val <- yed_test$BQ
+    # networkAES <- data.frame(src, tgt, val)
+    # networkAES <- na.omit(networkAES)
+
     output$net <- renderForceNetwork(forceNetwork(
-        Links  = MisLinks, Nodes   = MisNodes,
+        Links  = tgt, Nodes   = src,
         Source = "source", Target  = "target",
         Value  = "value",  NodeID  = "name", zoom = TRUE, 
         Group  = "group",  opacity = input$opacity))
-        
+
+    
+    # output$net <- renderForceNetwork(forceNetwork(
+    #     Links  = MisLinks, Nodes   = MisNodes,
+    #     Source = "source", Target  = "target",
+    #     Value  = "value",  NodeID  = "name", zoom = TRUE, 
+    #     Group  = "group",  opacity = input$opacity))
+    
     
     # output$distPlot <- renderPlot({
     # 
