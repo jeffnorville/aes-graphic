@@ -7,6 +7,11 @@ library(igraph)    #graph_from_data_frame()
 
 #db <- read_xlsx('C:/Users/Norville/Documents/QuickStart/D1.1_List_of_AES_English.xlsm')
 
+rm(d11)
+d11 <- read_excel("C:/Users/Norville/Dropbox/API-SMAL_Partage_Animation/Livrables/D1.1_List_of_AES_English.xlsm",
+                  sheet = "database", skip = 1)
+
+
 
 yed_test <- read_excel("C:/Users/Norville/OneDrive/Documents/INRA-2020/17_sept_2020/yed_test.xlsx", 
                        sheet = "Feuil2", skip = 1)
@@ -16,9 +21,29 @@ yed_test <- read_excel("C:/Users/Jeff Norville/OneDrive/Documents/INRA-2020/17_s
 
 summary(yed_test)
 class(yed_test)
-links <- data.frame(source =  yed_test$`Solution in common...1`,
+
+rm(links, nodes)
+
+links <- distinct(.data = data.frame(source = d11$com_challenge, 
+                    target = d11$com_solution,
+                    importance = d11$qbalance),
+                  .keep_all = FALSE)
+
+nodes <- distinct(
+  data.frame(source = d11$com_challenge,
+             carac = d11$sol_tag_scenario),
+  .keep_all = FALSE
+)
+
+network <- graph_from_data_frame(d=links, vertices=nodes, directed=TRUE) 
+
+
+
+
+links <- distinct(.data = data.frame(source =  yed_test$`Solution in common...1`,
                     target=    yed_test$`Common challenge impacted...4`,
-                    importance=yed_test$BQ)
+                    importance=yed_test$BQ),
+                  .keep_all = FALSE)
 nodes <- distinct(.data = data.frame(name = yed_test$`Common challenge impacted...4`,
                       carac=yed_test$`Specific issue impacted`),
                   .keep_all = FALSE)
