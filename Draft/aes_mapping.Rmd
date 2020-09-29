@@ -1,75 +1,79 @@
 ---
-title: "Tutorial"
-output: learnr::tutorial
+title: "Notes to AES Article"
+author: Jeff Norville
+output: bookdown::html_document2: default
+bibliography: "C:/Users/Norville/Documents/Bibliotheque/INRA-2018.bib"
+link-citations: yes
 runtime: shiny_prerendered
 ---
 
-```{r setup, include=FALSE}
-library(learnr)
-knitr::opts_chunk$set(echo = FALSE)
-```
+
+Practise a citation like @Dick1985b
 
 
-## Topic 1
 
-### Exercise 
 
-*Here's a simple exercise with an empty code chunk provided for entering the answer.*
 
-Write the R code required to add two plus two:
+<!-- ## Topic 1 -->
 
-```{r two-plus-two, exercise=TRUE}
+<!-- ### Exercise  -->
 
-```
+<!-- *Here's a simple exercise with an empty code chunk provided for entering the answer.* -->
 
-### Exercise with Code
+<!-- Write the R code required to add two plus two: -->
 
-*Here's an exercise with some prepopulated code as well as `exercise.lines = 5` to provide a bit more initial room to work.*
+<!-- ```{r two-plus-two, exercise=TRUE} -->
 
-Now write a function that adds any two numbers and then call it:
+<!-- ``` -->
 
-```{r add-function, exercise=TRUE, exercise.lines = 5}
-add <- function() {
-  
-}
-```
+<!-- ### Exercise with Code -->
 
-## Topic 2
+<!-- *Here's an exercise with some prepopulated code as well as `exercise.lines = 5` to provide a bit more initial room to work.* -->
 
-### Exercise with Hint
+<!-- Now write a function that adds any two numbers and then call it: -->
 
-*Here's an exercise where the chunk is pre-evaulated via the `exercise.eval` option (so the user can see the default output we'd like them to customize). We also add a "hint" to the correct solution via the chunk immediate below labeled `print-limit-hint`.*
+<!-- ```{r add-function, exercise=TRUE, exercise.lines = 5} -->
+<!-- add <- function() { -->
 
-Modify the following code to limit the number of rows printed to 5:
+<!-- } -->
+<!-- ``` -->
 
-```{r print-limit, exercise=TRUE, exercise.eval=TRUE}
-mtcars
-```
+<!-- ## Topic 2 -->
 
-```{r print-limit-hint}
-head(mtcars)
-```
+<!-- ### Exercise with Hint -->
 
-### Quiz
+<!-- *Here's an exercise where the chunk is pre-evaulated via the `exercise.eval` option (so the user can see the default output we'd like them to customize). We also add a "hint" to the correct solution via the chunk immediate below labeled `print-limit-hint`.* -->
 
-*You can include any number of single or multiple choice questions as a quiz. Use the `question` function to define a question and the `quiz` function for grouping multiple questions together.*
+<!-- Modify the following code to limit the number of rows printed to 5: -->
 
-Some questions to verify that you understand the purposes of various base and recommended R packages:
+<!-- ```{r print-limit, exercise=TRUE, exercise.eval=TRUE} -->
+<!-- mtcars -->
+<!-- ``` -->
 
-```{r quiz}
-quiz(
-  question("Which package contains functions for installing other R packages?",
-    answer("base"),
-    answer("tools"),
-    answer("utils", correct = TRUE),
-    answer("codetools")
-  ),
-  question("Which of the R packages listed below are used to create plots?",
-    answer("lattice", correct = TRUE),
-    answer("tools"),
-    answer("stats"),
-    answer("grid", correct = TRUE)
-  )
-)
-```
+<!-- ```{r print-limit-hint} -->
+<!-- head(mtcars) -->
+<!-- ``` -->
+
+<!-- ### Quiz -->
+
+<!-- *You can include any number of single or multiple choice questions as a quiz. Use the `question` function to define a question and the `quiz` function for grouping multiple questions together.* -->
+
+<!-- Some questions to verify that you understand the purposes of various base and recommended R packages: -->
+
+<!-- ```{r quiz} -->
+<!-- quiz( -->
+<!--   question("Which package contains functions for installing other R packages?", -->
+<!--     answer("base"), -->
+<!--     answer("tools"), -->
+<!--     answer("utils", correct = TRUE), -->
+<!--     answer("codetools") -->
+<!--   ), -->
+<!--   question("Which of the R packages listed below are used to create plots?", -->
+<!--     answer("lattice", correct = TRUE), -->
+<!--     answer("tools"), -->
+<!--     answer("stats"), -->
+<!--     answer("grid", correct = TRUE) -->
+<!--   ) -->
+<!-- ) -->
+<!-- ``` -->
 
