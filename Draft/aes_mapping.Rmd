@@ -8,7 +8,7 @@ runtime: shiny_prerendered
 ---
 
 
-Practise a citation like @Dick1985b
+Practice a citation like @Dick1985b
 
 
 
