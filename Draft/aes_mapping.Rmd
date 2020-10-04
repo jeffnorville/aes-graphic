@@ -9,8 +9,13 @@ link-citations: true
 
 Hello world, a Bookdown test
 
+<<<<<<< HEAD
 #Practise a citation like @Dick1985b
 # bibliography: "C:/Users/Norville/Documents/Bibliotheque/INRA-2018.bib"
+=======
+Practice a citation like @Dick1985b
+
+>>>>>>> 3f9814076a5dc8c1546f682eb1cf5ab7d228e678
 
 #output: bookdown::html_document2: default
 #link-citations: yes
