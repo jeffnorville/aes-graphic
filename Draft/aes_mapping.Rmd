@@ -1,16 +1,20 @@
 ---
 title: "Notes to AES Article"
 author: Jeff Norville
-output: bookdown::html_document2: default
 bibliography: "C:/Users/Norville/Documents/Bibliotheque/INRA-2018.bib"
-link-citations: yes
-runtime: shiny_prerendered
+biblio-style: "apalike"
+link-citations: true
+#runtime: shiny_prerendered
 ---
 
+Hello world, a Bookdown test
 
-Practise a citation like @Dick1985b
+#Practise a citation like @Dick1985b
+# bibliography: "C:/Users/Norville/Documents/Bibliotheque/INRA-2018.bib"
 
-
+#output: bookdown::html_document2: default
+#link-citations: yes
+#getwd()
 
 
 

@@ -11,6 +11,14 @@ rm(d11)
 d11 <- read_excel("C:/Users/Norville/Dropbox/API-SMAL_Partage_Animation/Livrables/D1.1_List_of_AES_English.xlsm",
                   sheet = "database", skip = 1)
 
+# then the trick begins at line 245 of Sunbelt 2019 R Network Visualization Workshop.R
+# Read in the data:
+# nodes2 <- read.csv("./Data files/Dataset2-Media-User-Example-NODES.csv", header=T, as.is=T)
+# links2 <- read.csv("./Data files/Dataset2-Media-User-Example-EDGES.csv", header=T, row.names=1)
+
+# links2 is a matrix for a two-mode network:
+links2 <- as.matrix(links2)
+
 
 
 yed_test <- read_excel("C:/Users/Norville/OneDrive/Documents/INRA-2020/17_sept_2020/yed_test.xlsx", 
