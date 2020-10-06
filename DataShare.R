@@ -11,16 +11,107 @@ rm(d11)
 d11 <- read_excel("C:/Users/Norville/Dropbox/API-SMAL_Partage_Animation/Livrables/D1.1_List_of_AES_English.xlsm",
                   sheet = "database", skip = 1)
 
+d11$com_solution
+
+aes_links <- read_excel("C:/Users/Norville/Dropbox/API-SMAL_Partage_Animation/Livrables/D1.1_List_of_AES_English.xlsm",
+                  sheet = "links", skip = 1)
+
+aes_nodes <- read_excel("C:/Users/Norville/Dropbox/API-SMAL_Partage_Animation/Livrables/D1.1_List_of_AES_English.xlsm",
+                        sheet = "nodes", skip = 1)
+
+rm(aes_links)
+rm(aes_nodes)
+
+library(igraph)
+net <- graph_from_data_frame(d=aes_links, vertices=aes_nodes, directed=T) 
+class(net)
+E(net)
+V(net)
+
+E(net)[weight==0]
+V(net)[type=="Challenge"]
+V(net)[type=="Solution"]
+
+V(net)[name=="Targeted biodiversity"]
+
+V(net)[name=="Biodiversity"]
+
+
+as_edgelist(net, names=T)
+as_adjacency_matrix(net, attr="weight")
+
+as_data_frame(net, what="edges")
+as_data_frame(net, what="vertices")
+
+plot(net)
+
+# Removing loops from the graph:
+net <- simplify(net, remove.multiple = F, remove.loops = T) 
+
+# Let's and reduce the arrow size and remove the labels:
+plot(net, edge.arrow.size=.4,vertex.label=NA)
+
+plot(net, edge.arrow.size=.4, edge.curved=.1)
+
+# Set node color to orange and the border color to hex #555555
+# Replace the vertex label with the node names stored in "media"
+plot(net, edge.arrow.size=.2, edge.curved=0,
+     vertex.color="orange", vertex.frame.color="#555555",
+     vertex.label=V(net)$media, vertex.label.color="black",
+     vertex.label.cex=.7) 
+
+# Compute node degrees (#links) and use that to set node size:
+deg <- degree(net, mode="all")
+V(net)$size <- deg*3
+
+E(net)[]
+# Set edge width based on weight:
+E(net)$width <- E(net)$weight/6
+
+#change arrow size and edge color:
+E(net)$arrow.size <- .2
+E(net)$edge.color <- "gray80"
+
+# We can even set the network layout:
+graph_attr(net, "layout") <- layout_with_lgl
+plot(net) 
+
+# We can also override the attributes explicitly in the plot:
+plot(net, edge.color="orange", vertex.color="gray50") 
+
+
+
+
+
+
+
+
+
+library("visNetwork") 
+head(aes_links)
+head(aes_nodes)
+
+class(aes_nodes)
+class(nodes)
+
+visNetwork(aes_nodes, aes_links)
+
+
+
+pesticide %>% filter(.data = d11, com_solution == "Pesticide use")
+
 
 
 yed_test <- read_excel("C:/Users/Norville/OneDrive/Documents/INRA-2020/17_sept_2020/yed_test.xlsx", 
                        sheet = "Feuil2", skip = 1)
-
 yed_test <- read_excel("C:/Users/Jeff Norville/OneDrive/Documents/INRA-2020/17_sept_2020/yed_test.xlsx", 
                        sheet = "Feuil2", skip = 1)
 
-summary(yed_test)
-class(yed_test)
+
+
+class(d11)
+d11$retain
+
 
 rm(links, nodes)
 
