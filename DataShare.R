@@ -36,6 +36,7 @@ rm(vis.aesnodes)
 ## igraph method
 library(igraph)
 net <- graph_from_data_frame(d=aeslinks, vertices=aesnodes, directed=T) 
+?graph_from_data_frame
 plot(net)
 
 graph.data.frame(aeslinks, directed=TRUE, vertices = aesnodes)
@@ -43,6 +44,7 @@ graph.data.frame(aeslinks, directed=TRUE, vertices = aesnodes)
 ## visNetwork prettier and has more edge options
 library("visNetwork") 
 
+# play with nodes
 vis.aesnodes <- aesnodes
 vis.aeslinks <- aeslinks
 
@@ -57,6 +59,13 @@ vis.aesnodes$color.border <- "black"
 vis.aesnodes$color.highlight.background <- "orange"
 vis.aesnodes$color.highlight.border <- "darkred"
 
+#clean up links
+vis.aeslinks$width <- 1+links$weight/8 # line width
+vis.aeslinks$color <- "gray"    # line color  
+vis.aeslinks$arrows <- "middle" # arrows: 'from', 'to', or 'middle'
+vis.aeslinks$smooth <- FALSE    # should the edges be curved?
+vis.aeslinks$shadow <- FALSE    # edge shadow
+
 
 visNetwork(vis.aesnodes, vis.aeslinks)
 
@@ -65,6 +74,11 @@ visNetwork(vis.aesnodes, vis.aeslinks)
 ?visNodes
 ?visEdges
 
+library(networkD3)
+
+forceNetwork(Links = aeslinks, Nodes = aesnodes, Source = "source",
+             Target = "target", Value = "value", NodeID = "name",
+             Group = "group", opacity = 0.4)
 
 
 library(igraph)

@@ -15,8 +15,7 @@ biblio-style: apalike
 ## Read D1.1 Table
 ```{r}
 library(readxl)
-library(networkD3)
-library(igraph)
+
 
 
 aes_links <- read_excel("C:/Users/Norville/Dropbox/API-SMAL_Partage_Animation/Livrables/D1.1_List_of_AES_English.xlsm",
@@ -25,7 +24,10 @@ aes_nodes <- read_excel("C:/Users/Norville/Dropbox/API-SMAL_Partage_Animation/Li
                         sheet = "nodes", skip = 1)
 net <- graph_from_data_frame(d=aes_links, vertices=aes_nodes, directed=T) 
 
-plot(net)
+aeslinks <- read.csv("aeslinks.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
+aesnodes <- read.csv("aesnodes.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
+
+
 
 ```
 
