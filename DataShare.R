@@ -3,25 +3,69 @@ library(dplyr)
 library(networkD3) #simpleNetwork(), forceNetwork()
 library(igraph)    #graph_from_data_frame()
 
+## cleanup
+rm(list = ls()) 
+
+
+
 ### grab changes to D1.1 Table database tab
 
 #db <- read_xlsx('C:/Users/Norville/Documents/QuickStart/D1.1_List_of_AES_English.xlsm')
-
 rm(d11)
 d11 <- read_excel("C:/Users/Norville/Dropbox/API-SMAL_Partage_Animation/Livrables/D1.1_List_of_AES_English.xlsm",
                   sheet = "database", skip = 1)
-
-<<<<<<< HEAD
 d11$com_solution
 
 aes_links <- read_excel("C:/Users/Norville/Dropbox/API-SMAL_Partage_Animation/Livrables/D1.1_List_of_AES_English.xlsm",
                   sheet = "links", skip = 1)
-
 aes_nodes <- read_excel("C:/Users/Norville/Dropbox/API-SMAL_Partage_Animation/Livrables/D1.1_List_of_AES_English.xlsm",
                         sheet = "nodes", skip = 1)
-
 rm(aes_links)
 rm(aes_nodes)
+
+### simpler to do by csv for now
+aeslinks <- read.csv("aeslinks.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
+aesnodes <- read.csv("aesnodes.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
+# aesnodes <- unique(aesnodes, incomparables = FALSE) # false issue
+rm(aeslinks)
+rm(aesnodes)
+rm(net)
+rm(vis.aeslinks)
+rm(vis.aesnodes)
+
+## igraph method
+library(igraph)
+net <- graph_from_data_frame(d=aeslinks, vertices=aesnodes, directed=T) 
+plot(net)
+
+graph.data.frame(aeslinks, directed=TRUE, vertices = aesnodes)
+
+## visNetwork prettier and has more edge options
+library("visNetwork") 
+
+vis.aesnodes <- aesnodes
+vis.aeslinks <- aeslinks
+
+vis.aesnodes$shape  <- "box"  
+vis.aesnodes$shadow <- TRUE # Nodes will drop shadow
+vis.aesnodes$title  <- vis.aesnodes$long.definition
+vis.aesnodes$label  <- vis.aesnodes$node.name
+vis.aesnodes$borderWidth <- 2 # Node border width
+#vis.aesnodes$shape <- c("box", "ellipse")[aesnodes$node.type]
+vis.aesnodes$color.background <- c("slategrey", "gold")[aesnodes$node.type]
+vis.aesnodes$color.border <- "black"
+vis.aesnodes$color.highlight.background <- "orange"
+vis.aesnodes$color.highlight.border <- "darkred"
+
+
+visNetwork(vis.aesnodes, vis.aeslinks)
+
+
+?visNetwork
+?visNodes
+?visEdges
+
+
 
 library(igraph)
 net <- graph_from_data_frame(d=aes_links, vertices=aes_nodes, directed=T) 

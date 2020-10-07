@@ -1,85 +1,96 @@
 ---
 title: "Notes to AES Article"
-author: Jeff Norville
-bibliography: "C:/Users/Norville/Documents/Bibliotheque/INRA-2018.bib"
-biblio-style: "apalike"
-link-citations: true
-#runtime: shiny_prerendered
+author: "Jeff Norville"
+bibliography: C:/Users/Norville/Documents/Bibliotheque/INRA-2018.bib
+output: 
+  html_document:
+    toc: yes
+  pdf_document:
+    toc: yes
+
+link-citations: yes
+biblio-style: apalike
 ---
 
-Hello world, a Bookdown test
+## Read D1.1 Table
+```{r}
+library(readxl)
+library(networkD3)
+library(igraph)
 
-#Practise a citation like @Dick1985b
-# bibliography: "C:/Users/Norville/Documents/Bibliotheque/INRA-2018.bib"
+
+aes_links <- read_excel("C:/Users/Norville/Dropbox/API-SMAL_Partage_Animation/Livrables/D1.1_List_of_AES_English.xlsm",
+                  sheet = "links", skip = 1)
+aes_nodes <- read_excel("C:/Users/Norville/Dropbox/API-SMAL_Partage_Animation/Livrables/D1.1_List_of_AES_English.xlsm",
+                        sheet = "nodes", skip = 1)
+net <- graph_from_data_frame(d=aes_links, vertices=aes_nodes, directed=T) 
+
+plot(net)
+
+```
+
+
+## Prairie
+```{r}
+
+require(visNetwork, quietly = TRUE)
+# minimal example
+nodes <- data.frame(c("Prairie (vs cropland)",
+"Prairies",
+"Adding grasslands to Landscape (leys in particular)",
+"Adding grasslands to Landscape (meadows, pastures, permanent grasslands, semi-natural grasslands)"))
+edges <- data.frame(from = c(1,2), to = c(1,3))
+visNetwork(nodes, edges, width = "100%")
+
+```
+
+## Forest
+```{r}
+
+library(networkD3)
+src <- c("Biodiversity", "Biodiversity", "Biodiversity", "Biodiversity", "Reduce GHG Emissions", "Reduce GHG Emissions", "Reduce soil, water pollution", "Reduce soil, water pollution", "Soil fertility")
+target <- c("B", "C", "D", "J", "E", "F", "G", "H", "I")
+networkData <- data.frame(src, target)
+simpleNetwork(networkData)
+```
+
+
+
+## simpleNetwork
+
+```{r}
+library(networkD3)
+src <- c("A", "A", "A", "A", "B", "B", "C", "C", "D")
+target <- c("B", "C", "D", "J", "E", "F", "G", "H", "I")
+networkData <- data.frame(src, target)
+simpleNetwork(networkData)
+```
+
+
+## forceNetwork
+
+```{r}
+data(MisLinks)
+data(MisNodes)
+forceNetwork(Links = MisLinks, Nodes = MisNodes, Source = "source",
+             Target = "target", Value = "value", NodeID = "name",
+             Group = "group", opacity = 0.4, zoom = TRUE)
+```
+
+
+
+
+## Intro
+
+
+I'll add figures for the D1.1 table inline here, then we can collaberate in-line below.
+
+Can I add datatables too?
+
 =======
-Practice a citation like @Dick1985b
 
-#output: bookdown::html_document2: default
-#link-citations: yes
-#getwd()
+Practice a citation like @Bayer2019
 
 
 
-<!-- ## Topic 1 -->
-
-<!-- ### Exercise  -->
-
-<!-- *Here's a simple exercise with an empty code chunk provided for entering the answer.* -->
-
-<!-- Write the R code required to add two plus two: -->
-
-<!-- ```{r two-plus-two, exercise=TRUE} -->
-
-<!-- ``` -->
-
-<!-- ### Exercise with Code -->
-
-<!-- *Here's an exercise with some prepopulated code as well as `exercise.lines = 5` to provide a bit more initial room to work.* -->
-
-<!-- Now write a function that adds any two numbers and then call it: -->
-
-<!-- ```{r add-function, exercise=TRUE, exercise.lines = 5} -->
-<!-- add <- function() { -->
-
-<!-- } -->
-<!-- ``` -->
-
-<!-- ## Topic 2 -->
-
-<!-- ### Exercise with Hint -->
-
-<!-- *Here's an exercise where the chunk is pre-evaulated via the `exercise.eval` option (so the user can see the default output we'd like them to customize). We also add a "hint" to the correct solution via the chunk immediate below labeled `print-limit-hint`.* -->
-
-<!-- Modify the following code to limit the number of rows printed to 5: -->
-
-<!-- ```{r print-limit, exercise=TRUE, exercise.eval=TRUE} -->
-<!-- mtcars -->
-<!-- ``` -->
-
-<!-- ```{r print-limit-hint} -->
-<!-- head(mtcars) -->
-<!-- ``` -->
-
-<!-- ### Quiz -->
-
-<!-- *You can include any number of single or multiple choice questions as a quiz. Use the `question` function to define a question and the `quiz` function for grouping multiple questions together.* -->
-
-<!-- Some questions to verify that you understand the purposes of various base and recommended R packages: -->
-
-<!-- ```{r quiz} -->
-<!-- quiz( -->
-<!--   question("Which package contains functions for installing other R packages?", -->
-<!--     answer("base"), -->
-<!--     answer("tools"), -->
-<!--     answer("utils", correct = TRUE), -->
-<!--     answer("codetools") -->
-<!--   ), -->
-<!--   question("Which of the R packages listed below are used to create plots?", -->
-<!--     answer("lattice", correct = TRUE), -->
-<!--     answer("tools"), -->
-<!--     answer("stats"), -->
-<!--     answer("grid", correct = TRUE) -->
-<!--   ) -->
-<!-- ) -->
-<!-- ``` -->
 
