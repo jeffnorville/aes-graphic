@@ -7,7 +7,6 @@ library(igraph)    #graph_from_data_frame()
 rm(list = ls()) 
 
 
-
 ### grab changes to D1.1 Table database tab
 
 #db <- read_xlsx('C:/Users/Norville/Documents/QuickStart/D1.1_List_of_AES_English.xlsm')
@@ -20,69 +19,42 @@ aes_links <- read_excel("C:/Users/Norville/Dropbox/API-SMAL_Partage_Animation/Li
                   sheet = "links", skip = 1)
 aes_nodes <- read_excel("C:/Users/Norville/Dropbox/API-SMAL_Partage_Animation/Livrables/D1.1_List_of_AES_English.xlsm",
                         sheet = "nodes", skip = 1)
-rm(aes_links)
-rm(aes_nodes)
-
 ### simpler to do by csv for now
 aeslinks <- read.csv("aeslinks.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
 aesnodes <- read.csv("aesnodes.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
 # aesnodes <- unique(aesnodes, incomparables = FALSE) # false issue
-rm(aeslinks)
-rm(aesnodes)
-rm(net)
-rm(vis.aeslinks)
-rm(vis.aesnodes)
 
 ## igraph method
 library(igraph)
 net <- graph_from_data_frame(d=aeslinks, vertices=aesnodes, directed=T) 
-?graph_from_data_frame
 plot(net)
-
-## troubleshooting unmatched nodes/edges
-library(sqldf)
-sqldf('SELECT id FROM aesnodes')
-sqldf('SELECT from FROM aeslinks')
-
-missing <- sqldf('SELECT id FROM aesnodes EXCEPT SELECT to FROM aeslinks')
-
-library(dplyr)
-anti_join(aesnodes, aeslinks) by (c("id", "from"))
-setdiff(aesnodes$id, aeslinks$from)
-setdiff(aesnodes$id, aeslinks$to)
-
-
-missing_nodes %>% 
-anti_join(aesnodes, aeslinks by = "from")
-
-
-graph.data.frame(aeslinks, directed=TRUE, vertices = aesnodes)
 
 ## visNetwork prettier and has more edge options
 library("visNetwork") 
-
 # play with nodes
 vis.aesnodes <- aesnodes
 vis.aeslinks <- aeslinks
 
-vis.aesnodes$shape  <- c("box", "ellipse")[aesnodes$node.type]
+visNetwork(vis.aesnodes, vis.aeslinks)
+
+#clean up nodes
+vis.aesnodes$shape  <- c("ellipse", "box")[aesnodes$node.type]
 vis.aesnodes$shadow <- TRUE # Nodes will drop shadow
 vis.aesnodes$title  <- vis.aesnodes$long.definition
-vis.aesnodes$label  <- vis.aesnodes$node.name
+vis.aesnodes$label  <- vis.aesnodes$short.definition
 vis.aesnodes$borderWidth <- 2 # Node border width
-#vis.aesnodes$shape <- c("box", "ellipse")[aesnodes$node.type]
-vis.aesnodes$color.background <- c("slategrey", "gold")[aesnodes$node.type]
+vis.aesnodes$color.background <- c("lightgrey", "gold")[aesnodes$node.type]
 vis.aesnodes$color.border <- "black"
-vis.aesnodes$color.highlight.background <- "orange"
-vis.aesnodes$color.highlight.border <- "darkred"
+vis.aesnodes$color.highlight.background <- "lightgreen"
+vis.aesnodes$color.highlight.border <- "red"
 
 #clean up links
-vis.aeslinks$width <- 1+links$weight/8 # line width
-vis.aeslinks$color <- "gray"    # line color  
+vis.aeslinks$width <- aeslinks$weight*3 # line width
+vis.aeslinks$color <- c("green", "red", "black")[aeslinks$color] # line color  
 vis.aeslinks$arrows <- "middle" # arrows: 'from', 'to', or 'middle'
 vis.aeslinks$smooth <- FALSE    # should the edges be curved?
 vis.aeslinks$shadow <- FALSE    # edge shadow
-
+vis.aeslinks$labelHighlightBold <- TRUE
 
 visNetwork(vis.aesnodes, vis.aeslinks)
 
@@ -90,6 +62,43 @@ visNetwork(vis.aesnodes, vis.aeslinks)
 ?visNetwork
 ?visNodes
 ?visEdges
+
+
+
+### FOREST ONLY
+### simpler to do by csv 
+forestnodes <- read.csv("forestnodes.csv", sep=";", header=TRUE, as.is = TRUE) # stringsAsFactors = FALSE
+forestlinks <- read.csv("forestlinks.csv", sep=";", header=TRUE, as.is = TRUE)
+library(igraph)
+net <- graph_from_data_frame(d=forestlinks, vertices=forestnodes, directed=T) 
+plot(net)
+
+library("visNetwork") 
+vis.forestnodes <- forestnodes
+vis.forestlinks <- forestlinks
+
+vis.forestnodes$shape  <- c("ellipse", "box")[forestnodes$node.type]
+vis.forestnodes$shadow <- FALSE # Nodes will drop shadow
+vis.forestnodes$title  <- forestnodes$node.name
+vis.forestnodes$label  <- forestnodes$node.name
+vis.forestnodes$borderWidth <- 1 # Node border width
+vis.forestnodes$color.background <- c("gold", "grey")[forestnodes$node.type]
+vis.forestnodes$color.border <- "black"
+vis.forestnodes$color.highlight.background <- "lightgreen"
+vis.forestnodes$color.highlight.border <- "red"
+
+#clean up links
+vis.forestlinks$width <- forestlinks$weight*4 # line width
+vis.forestlinks$color <- c("green", "red")[forestlinks$color] #"green"    # line color  
+vis.forestlinks$arrows <- "middle" # arrows: 'from', 'to', or 'middle'
+vis.forestlinks$smooth <- TRUE    # should the edges be curved?
+vis.forestlinks$shadow <- FALSE    # edge shadow
+
+visNetwork(vis.forestnodes, vis.forestlinks)
+
+### FOREST ONLY
+
+
 
 library(networkD3)
 
@@ -100,7 +109,6 @@ forceNetwork(Links = aeslinks, Nodes = aesnodes, Source = "source",
 
 library(igraph)
 net <- graph_from_data_frame(d=aes_links, vertices=aes_nodes, directed=T) 
-class(net)
 E(net)
 V(net)
 
@@ -157,25 +165,7 @@ plot(net, edge.color="orange", vertex.color="gray50")
 
 
 
-
-
-
-
-
-
-library("visNetwork") 
-head(aes_links)
-head(aes_nodes)
-
-class(aes_nodes)
-class(nodes)
-
-visNetwork(aes_nodes, aes_links)
-
-
-
 pesticide %>% filter(.data = d11, com_solution == "Pesticide use")
-=======
 # then the trick begins at line 245 of Sunbelt 2019 R Network Visualization Workshop.R
 # Read in the data:
 # nodes2 <- read.csv("./Data files/Dataset2-Media-User-Example-NODES.csv", header=T, as.is=T)
@@ -183,22 +173,14 @@ pesticide %>% filter(.data = d11, com_solution == "Pesticide use")
 
 # links2 is a matrix for a two-mode network:
 links2 <- as.matrix(links2)
->>>>>>> 1b5e364e64bf93eef8b8bc00e9f624063a891187
-
-
 
 yed_test <- read_excel("C:/Users/Norville/OneDrive/Documents/INRA-2020/17_sept_2020/yed_test.xlsx", 
                        sheet = "Feuil2", skip = 1)
 yed_test <- read_excel("C:/Users/Jeff Norville/OneDrive/Documents/INRA-2020/17_sept_2020/yed_test.xlsx", 
                        sheet = "Feuil2", skip = 1)
-
-
-
 class(d11)
 d11$retain
-
-
-rm(links, nodes)
+#rm(links, nodes)
 
 links <- distinct(.data = data.frame(source = d11$com_challenge, 
                     target = d11$com_solution,
@@ -213,9 +195,6 @@ nodes <- distinct(
 
 network <- graph_from_data_frame(d=links, vertices=nodes, directed=TRUE) 
 
-
-
-
 links <- distinct(.data = data.frame(source =  yed_test$`Solution in common...1`,
                     target=    yed_test$`Common challenge impacted...4`,
                     importance=yed_test$BQ),
@@ -227,8 +206,6 @@ nodes <- distinct(.data = data.frame(name = yed_test$`Common challenge impacted.
 
 # Turn it into igraph object
 network <- graph_from_data_frame(d=links, vertices=nodes, directed=TRUE) 
-
-
 
 src <- yed_test$`Common challenge impacted...17`
 tgt <- yed_test$`Solution in common...18`
@@ -258,13 +235,24 @@ class(networkAES)
 
 
 
-# rm(db)
 
-### archive old DT. datbase entries
 
-### load to DT in package DTedit
 
-### plot the relationships
+## troubleshooting unmatched nodes/edges
+library(sqldf)
+sqldf('SELECT id FROM aesnodes')
+sqldf('SELECT from FROM aeslinks')
+
+missing <- sqldf('SELECT id FROM aesnodes EXCEPT SELECT to FROM aeslinks')
+
+library(dplyr)
+anti_join(aesnodes, aeslinks) by (c("id", "from"))
+setdiff(aesnodes$id, aeslinks$from)
+setdiff(aesnodes$id, aeslinks$to)
+
+
+missing_nodes %>% 
+  anti_join(aesnodes, aeslinks by = "from")
 
 
 # forceNetwork 
@@ -275,19 +263,4 @@ data(MisNodes)
 forceNetwork(Links = MisLinks, Nodes = MisNodes, Source = "source",
              Target = "target", Value = "value", NodeID = "name",
              Group = "group", opacity = 1, zoom = F, bounded = T)
-
-
-#Nodes
-
-#Links
-
-
-### render to Shiny 
-
-### republish
-
-# readxl
-
-
-
 

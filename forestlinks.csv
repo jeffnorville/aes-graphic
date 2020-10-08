@@ -1,0 +1,10 @@
+from;to;type;label;color;weight
+n035;n900;link;++;0;1
+n035;n902;link;+;0;2
+n035;n903;link;+;0;1
+n035;n905;link;++;0;2
+n040;n902;link;++;0;2
+n040;n904;link;+;0;1
+n040;n906;link;++;0;2
+n036;n901;link;+;0;1
+n901;n036;link;-;1;1
