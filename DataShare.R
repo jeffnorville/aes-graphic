@@ -39,6 +39,23 @@ net <- graph_from_data_frame(d=aeslinks, vertices=aesnodes, directed=T)
 ?graph_from_data_frame
 plot(net)
 
+## troubleshooting unmatched nodes/edges
+library(sqldf)
+sqldf('SELECT id FROM aesnodes')
+sqldf('SELECT from FROM aeslinks')
+
+missing <- sqldf('SELECT id FROM aesnodes EXCEPT SELECT to FROM aeslinks')
+
+library(dplyr)
+anti_join(aesnodes, aeslinks) by (c("id", "from"))
+setdiff(aesnodes$id, aeslinks$from)
+setdiff(aesnodes$id, aeslinks$to)
+
+
+missing_nodes %>% 
+anti_join(aesnodes, aeslinks by = "from")
+
+
 graph.data.frame(aeslinks, directed=TRUE, vertices = aesnodes)
 
 ## visNetwork prettier and has more edge options
@@ -48,7 +65,7 @@ library("visNetwork")
 vis.aesnodes <- aesnodes
 vis.aeslinks <- aeslinks
 
-vis.aesnodes$shape  <- "box"  
+vis.aesnodes$shape  <- c("box", "ellipse")[aesnodes$node.type]
 vis.aesnodes$shadow <- TRUE # Nodes will drop shadow
 vis.aesnodes$title  <- vis.aesnodes$long.definition
 vis.aesnodes$label  <- vis.aesnodes$node.name
