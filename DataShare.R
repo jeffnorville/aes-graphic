@@ -164,6 +164,17 @@ plot(net)
 plot(net, edge.color="orange", vertex.color="gray50") 
 
 
+### SANKEY of FOREST
+library(networkD3)
+
+sankeyNetwork(Links = forestlinks, Nodes = forestnodes, Source = "from",
+              Target = "to", Value = "weight", NodeID = "id",
+              units = "dunno", fontSize = 12, nodeWidth = 30)
+
+
+
+
+
 
 pesticide %>% filter(.data = d11, com_solution == "Pesticide use")
 # then the trick begins at line 245 of Sunbelt 2019 R Network Visualization Workshop.R

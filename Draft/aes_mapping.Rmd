@@ -68,14 +68,17 @@ vis.forestnodes$color.border <- "black"
 vis.forestnodes$color.highlight.background <- "lightgreen"
 vis.forestnodes$color.highlight.border <- "red"
 
-#clean up links
+# edges
 vis.forestlinks$width <- forestlinks$weight*4 # line width
 vis.forestlinks$color <- c("green", "red")[forestlinks$color] #"green"    # line color  
 vis.forestlinks$arrows <- "middle" # arrows: 'from', 'to', or 'middle'
 vis.forestlinks$smooth <- TRUE    # should the edges be curved?
 vis.forestlinks$shadow <- FALSE    # edge shadow
 
-visNetwork(vis.forestnodes, vis.forestlinks)
+
+
+visNetwork(vis.forestnodes, vis.forestlinks) %>%
+  visEdges(color = c("green", "red")[forestlinks$color])
 
 
 ```
