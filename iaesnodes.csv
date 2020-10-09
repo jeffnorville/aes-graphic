@@ -1,0 +1,21 @@
+id;node.type;com_solution;short.definition;long.definition
+n900;challenge;Biodiversity;Biodiversity;Biodiversity
+n901;challenge;Production;Production;Production
+n902;challenge;Crop protection;Crop protection;Crop protection
+n903;challenge;GHG Emissions;GHG Emissions;Greenhouse Gas Emissions
+n904;challenge;Pollution;Pollution;Pollution
+n905;challenge;Soil fertility;Soil fertility;Soil fertility
+n906;challenge;Targeted biodiversity;Targeted biodiversity;Targeted biodiversity
+n021;solution;Infrastructure AE;Addition of flower strips (wild mixes, nectar and pollen-rich, annuals);Infrastructure AE: Addition of flower strips (wild mixes, nectar and pollen-rich, annuals)
+n022;solution;Infrastructure AE;Addition of grass bordures (grass field/waterway margins, grass strips, grassland strips, managed grass strips);Infrastructure AE: Addition of grass bordures (grass field/waterway margins, grass strips, grassland strips, managed grass strips)
+n023;solution;Infrastructure AE;Addition of wooded islands / hedges (forest, woodlands, edges, forest edges, hedgerows);Infrastructure AE: Addition of wooded islands / hedges (forest, woodlands, edges, forest edges, hedgerows)
+n024;solution;Infrastructure AE;Augment semi-natural elements (SNEs);Infrastructure AE: Augment semi-natural elements (SNEs)
+n025;solution;Infrastructure AE;Develop hedges adjacent to agricultural plots;Infrastructure AE: Develop hedges adjacent to agricultural plots
+n026;solution;Infrastructure AE;Grass strips;Infrastructure AE: Grass strips
+n027;solution;Infrastructure AE;Hedges;Infrastructure AE: Hedges
+n028;solution;Infrastructure AE;Increase landscape connectivity by adjusting the spatial configuration of SNH;Infrastructure AE: Increase landscape connectivity by adjusting the spatial configuration of SNH
+n029;solution;Infrastructure AE;Increase life duration of temporary prairies;Infrastructure AE: Increase life duration of temporary prairies
+n030;solution;Infrastructure AE;Manipulation of the presence / proportion of SNHs;Infrastructure AE: Manipulation of the presence / proportion of SNHs
+n031;solution;Infrastructure AE;Return to fallow / meadow / shrublands;Infrastructure AE: Return to fallow / meadow / shrublands
+n032;solution;Infrastructure AE;Use mulch to increase soil richness;Infrastructure AE: Use mulch to increase soil richness
+n033;solution;Infrastructure AE;Woodland (SNE);Infrastructure AE: Woodland (SNE)

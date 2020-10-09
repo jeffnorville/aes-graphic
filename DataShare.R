@@ -40,8 +40,8 @@ visNetwork(vis.aesnodes, vis.aeslinks)
 #clean up nodes
 vis.aesnodes$shape  <- c("ellipse", "box")[aesnodes$node.type]
 vis.aesnodes$shadow <- TRUE # Nodes will drop shadow
-vis.aesnodes$title  <- vis.aesnodes$long.definition
-vis.aesnodes$label  <- vis.aesnodes$short.definition
+vis.aesnodes$title  <- aesnodes$short.definition
+vis.aesnodes$label  <- aesnodes$long.definition
 vis.aesnodes$borderWidth <- 2 # Node border width
 vis.aesnodes$color.background <- c("lightgrey", "gold")[aesnodes$node.type]
 vis.aesnodes$color.border <- "black"
@@ -50,8 +50,10 @@ vis.aesnodes$color.highlight.border <- "red"
 
 #clean up links
 vis.aeslinks$width <- aeslinks$weight*3 # line width
+vis.aeslinks$dashes <- aeslinks$type #c(TRUE, FALSE)[aeslinks$type]
 vis.aeslinks$color <- c("green", "red", "black")[aeslinks$color] # line color  
 vis.aeslinks$arrows <- "middle" # arrows: 'from', 'to', or 'middle'
+
 vis.aeslinks$smooth <- FALSE    # should the edges be curved?
 vis.aeslinks$shadow <- FALSE    # edge shadow
 vis.aeslinks$labelHighlightBold <- TRUE
@@ -79,8 +81,8 @@ vis.forestlinks <- forestlinks
 
 vis.forestnodes$shape  <- c("ellipse", "box")[forestnodes$node.type]
 vis.forestnodes$shadow <- FALSE # Nodes will drop shadow
-vis.forestnodes$title  <- forestnodes$node.name
-vis.forestnodes$label  <- forestnodes$node.name
+vis.forestnodes$title  <- forestnodes$short.definition
+vis.forestnodes$label  <- forestnodes$long.definition
 vis.forestnodes$borderWidth <- 1 # Node border width
 vis.forestnodes$color.background <- c("gold", "grey")[forestnodes$node.type]
 vis.forestnodes$color.border <- "black"

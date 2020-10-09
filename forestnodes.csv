@@ -1,11 +1,11 @@
-id;node.name;node.type
-n900;Biodiversity;1
-n901;Production;1
-n902;Crop protection;1
-n903;GHG Emissions;1
-n904;Pollution;1
-n905;Soil fertility;1
-n906;Targeted biodiversity;1
-n035;Forests located near ag plots;2
-n036;Woodland presence;2
-n040;Replanting cropland with forests;2
+id;node.type;com_solution;short.definition;long.definition
+n900;challenge;Biodiversity;Biodiversity;Biodiversity
+n901;challenge;Production;Production;Production
+n902;challenge;Crop protection;Crop protection;Crop protection
+n903;challenge;GHG Emissions;GHG Emissions;Greenhouse Gas Emissions
+n904;challenge;Pollution;Pollution;Pollution
+n905;challenge;Soil fertility;Soil fertility;Soil fertility
+n906;challenge;Targeted biodiversity;n906;Targeted biodiversity
+n018;solution;Forest;Forests located near ag plots;Forest: Forests located near ag plots
+n019;solution;Forest;Replanting cropland with forests;Forest: Replanting cropland with forests
+n020;solution;Forest;Woodland presence;Forest: Woodland presence

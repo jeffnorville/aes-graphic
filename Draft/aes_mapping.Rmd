@@ -1,7 +1,8 @@
 ---
 title: "Notes to AES Figures"
 author: "Jeff Norville"
-bibliography: C:/Users/Norville/Documents/Bibliotheque/INRA-2018.bib
+#bibliography: C:/Users/Norville/Documents/Bibliotheque/INRA-2018.bib
+bibliography: "C:/Users/Jeff Norville/Documents/Mendeley Bibtex/INRA-2018.bib"
 output: 
   html_document:
     toc: yes
@@ -19,7 +20,7 @@ Second -- the "from/to" design is designed to help use arrows, but now I realise
 
 
 ```{r message=FALSE}
-library(readxl)
+#library(readxl)
 library(igraph)
 
 
@@ -33,35 +34,49 @@ aesnodes <- read.csv("../aesnodes.csv", sep=";", header=TRUE, stringsAsFactors =
 net <- graph_from_data_frame(d=aeslinks, vertices=aesnodes, directed=T) 
 plot(net)
 
+```
 
+## Nicer layout with "physics"
+```{r  message=FALSE}
+library("visNetwork") 
+vis.aesnodes <- aesnodes
+vis.aeslinks <- aeslinks
+vis.aesnodes$shape  <- c("ellipse", "box")[aesnodes$node.type]
+vis.aesnodes$shadow <- TRUE # Nodes will drop shadow
+vis.aesnodes$title  <- aesnodes$short.definition
+vis.aesnodes$label  <- aesnodes$long.definition
+vis.aesnodes$borderWidth <- 2 # Node border width
+#vis.aesnodes$color.background <- c("lightgrey", "gold")[aesnodes$node.type]
+vis.aesnodes$color.border <- "black"
+vis.aesnodes$color.highlight.background <- "lightgreen"
+vis.aesnodes$color.highlight.border <- "red"
+
+vis.aeslinks$width <- aeslinks$weight*3 # line width
+vis.aeslinks$dashes <- aeslinks$type #c(TRUE, FALSE)[aeslinks$type]
+#vis.aeslinks$color <- c("green", "red", "black")[aeslinks$color]  
+vis.aeslinks$arrows <- "middle"
+vis.aeslinks$smooth <- FALSE    # should the edges be curved?
+vis.aeslinks$shadow <- FALSE    # edge shadow
+vis.aeslinks$labelHighlightBold <- TRUE
+
+visNetwork(vis.aesnodes, vis.aeslinks)
 ```
 
 
-## Forest - not too pretty
-```{r}
 
-library(igraph)
+## Forest via visNetwork
+```{r  message=FALSE}
 
 forestnodes <- read.csv("../forestnodes.csv", sep=";", header=TRUE, as.is = TRUE) # stringsAsFactors = FALSE
 forestlinks <- read.csv("../forestlinks.csv", sep=";", header=TRUE, as.is = TRUE)
-net <- graph_from_data_frame(d=forestlinks, vertices=forestnodes, directed=T) 
-plot(net)
 
-
-
-```
-
-## Forest via visNetwork
-```{r}
-
-library("visNetwork") 
 vis.forestnodes <- forestnodes
 vis.forestlinks <- forestlinks
 
 vis.forestnodes$shape  <- c("ellipse", "box")[forestnodes$node.type]
 vis.forestnodes$shadow <- FALSE # Nodes will drop shadow
-vis.forestnodes$title  <- forestnodes$node.name
-vis.forestnodes$label  <- forestnodes$node.name
+vis.forestnodes$title  <- forestnodes$short.definition
+vis.forestnodes$label  <- forestnodes$long.definition
 vis.forestnodes$borderWidth <- 1 # Node border width
 vis.forestnodes$color.background <- c("gold", "grey")[forestnodes$node.type]
 vis.forestnodes$color.border <- "black"
@@ -84,7 +99,39 @@ visNetwork(vis.forestnodes, vis.forestlinks) %>%
 ```
 
 
+## Infrastructure AE via visNetwork
+```{r message=FALSE}
 
+iaesnodes <- read.csv("../iaesnodes.csv", sep=";", header=TRUE, as.is = TRUE) # stringsAsFactors = FALSE
+iaeslinks <- read.csv("../iaeslinks.csv", sep=";", header=TRUE, as.is = TRUE)
+
+
+vis.iaesnodes <- iaesnodes
+vis.iaeslinks <- iaeslinks
+
+vis.iaesnodes$shape  <- c("ellipse", "box")[iaesnodes$node.type]
+vis.iaesnodes$shadow <- FALSE # Nodes will drop shadow
+vis.iaesnodes$title  <- iaesnodes$short.definition
+vis.iaesnodes$label  <- iaesnodes$long.definition
+vis.iaesnodes$borderWidth <- 1 # Node border width
+vis.iaesnodes$color.background <- c("gold", "grey")[iaesnodes$node.type]
+vis.iaesnodes$color.border <- "black"
+vis.iaesnodes$color.highlight.background <- "lightgreen"
+vis.iaesnodes$color.highlight.border <- "red"
+
+# edges
+vis.iaeslinks$color <- c("green", "red")[iaeslinks$color] #line color  
+vis.iaeslinks$width <- iaeslinks$weight*4 # line width
+vis.iaeslinks$arrows <- "middle" # arrows: 'from', 'to', or 'middle'
+vis.iaeslinks$smooth <- TRUE    # should the edges be curved?
+vis.iaeslinks$shadow <- FALSE    # edge shadow
+vis.iaeslinks$color <- c("green", "red")[iaeslinks$color] #line color  
+
+visNetwork(vis.iaesnodes, vis.iaeslinks) %>%
+  visEdges(color = c("green", "red")[iaeslinks$color])
+
+
+```
 
 
 
