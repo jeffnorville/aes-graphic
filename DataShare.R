@@ -1,4 +1,4 @@
-library(readxl)
+#library(readxl)
 library(dplyr)
 library(networkD3) #simpleNetwork(), forceNetwork()
 library(igraph)    #graph_from_data_frame()
@@ -37,8 +37,21 @@ vis.aeslinks <- aeslinks
 
 visNetwork(vis.aesnodes, vis.aeslinks)
 
+#distinct(aesnodes, node.type)
+distinct(vis.aesnodes, shape)
+
 #clean up nodes
-vis.aesnodes$shape  <- c("ellipse", "box")[aesnodes$node.type]
+
+vis.aesnodes$shape
+vis.aesnodes$shape <- aesnodes$node.type
+#gsub("solution", "ellipse", vis.aesnodes$shape)
+#gsub("challenge", "box", vis.aesnodes$shape)
+vis.aesnodes["shape"]
+
+vis.aesnodes$shape[c()]
+
+vis.aesnodes$shape[c(1, 2)] <- c("ellipse", "box")
+#vis.aesnodes$shape  <- c("ellipse", "box")[aesnodes$node.type]
 vis.aesnodes$shadow <- TRUE # Nodes will drop shadow
 vis.aesnodes$title  <- aesnodes$short.definition
 vis.aesnodes$label  <- aesnodes$long.definition

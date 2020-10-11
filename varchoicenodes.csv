@@ -1,0 +1,17 @@
+id;node.type;com_solution;short.definition;long.definition
+n900;challenge;Biodiversity;Biodiversity;Biodiversity
+n901;challenge;Production;Production;Production
+n902;challenge;Crop protection;Crop protection;Crop protection
+n903;challenge;GHG Emissions;GHG Emissions;Greenhouse Gas Emissions
+n904;challenge;Pollution;Pollution;Pollution
+n905;challenge;Soil fertility;Soil fertility;Soil fertility
+n906;challenge;Targeted biodiversity;Targeted biodiversity;Targeted biodiversity
+n062;solution;Varietal choice;Abundance of susceptible varietal year N;Varietal choice: Abundance of susceptible varietal year N
+n063;solution;Varietal choice;Abundance of susceptible varietal year N-1;Varietal choice: Abundance of susceptible varietal year N-1
+n064;solution;Varietal choice;Crop type has an influence on soil health;Varietal choice: Crop type has an influence on soil health
+n065;solution;Varietal choice;Distribution of the proportion of crops in each plot;Varietal choice: Distribution of the proportion of crops in each plot
+n066;solution;Varietal choice;Increase diversity of varietals (spatial diversity);Varietal choice: Increase diversity of varietals (spatial diversity)
+n067;solution;Varietal choice;Mixed varietals;Varietal choice: Mixed varietals
+n068;solution;Varietal choice;Resistant varieties (use fewer pesticides / fungicides);Varietal choice: Resistant varieties (use fewer pesticides / fungicides)
+n069;solution;Varietal choice;Target variety choice to reduce loss risk from disease AND for adaptivity to climate regime;Varietal choice: Target variety choice to reduce loss risk from disease AND for adaptivity to climate regime
+n070;solution;Varietal choice;Varietal diversity / intra-plot genetics (varietal association);Varietal choice: Varietal diversity / intra-plot genetics (varietal association)

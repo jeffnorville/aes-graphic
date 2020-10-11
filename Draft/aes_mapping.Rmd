@@ -19,7 +19,7 @@ I've changed to reading csv files in, as the objects in R really don't appreciat
 Second -- the "from/to" design is designed to help use arrows, but now I realise arrows will obscure the green / red idea -- which seems important, particularly in the meta-images.
 
 
-```{r message=FALSE}
+```{r message=FALSE echo=FALSE}
 #library(readxl)
 library(igraph)
 
@@ -37,7 +37,7 @@ plot(net)
 ```
 
 ## Nicer layout with "physics"
-```{r  message=FALSE}
+```{r message=FALSE echo=FALSE}
 library("visNetwork") 
 vis.aesnodes <- aesnodes
 vis.aeslinks <- aeslinks
@@ -65,7 +65,7 @@ visNetwork(vis.aesnodes, vis.aeslinks)
 
 
 ## Forest via visNetwork
-```{r  message=FALSE}
+```{r Forest, message=FALSE}
 
 forestnodes <- read.csv("../forestnodes.csv", sep=";", header=TRUE, as.is = TRUE) # stringsAsFactors = FALSE
 forestlinks <- read.csv("../forestlinks.csv", sep=";", header=TRUE, as.is = TRUE)
@@ -85,22 +85,20 @@ vis.forestnodes$color.highlight.border <- "red"
 
 # edges
 vis.forestlinks$width <- forestlinks$weight*4 # line width
-vis.forestlinks$color <- c("green", "red")[forestlinks$color] #"green"    # line color  
+vis.forestlinks$color <- c("green", "red")[forestlinks$color] #  
 vis.forestlinks$arrows <- "middle" # arrows: 'from', 'to', or 'middle'
 vis.forestlinks$smooth <- TRUE    # should the edges be curved?
 vis.forestlinks$shadow <- FALSE    # edge shadow
 
-
-
-visNetwork(vis.forestnodes, vis.forestlinks) %>%
-  visEdges(color = c("green", "red")[forestlinks$color])
-
+visNetwork(vis.forestnodes, vis.forestlinks)
+# %>%  visEdges(color = c("green", "red")[forestlinks$color])
 
 ```
 
 
+
 ## Infrastructure AE via visNetwork
-```{r message=FALSE}
+```{r Infrastructure AE, message=FALSE}
 
 iaesnodes <- read.csv("../iaesnodes.csv", sep=";", header=TRUE, as.is = TRUE) # stringsAsFactors = FALSE
 iaeslinks <- read.csv("../iaeslinks.csv", sep=";", header=TRUE, as.is = TRUE)
@@ -130,6 +128,107 @@ vis.iaeslinks$color <- c("green", "red")[iaeslinks$color] #line color
 visNetwork(vis.iaesnodes, vis.iaeslinks) %>%
   visEdges(color = c("green", "red")[iaeslinks$color])
 
+
+```
+
+
+## Crop Choice via visNetwork
+```{r Crop Choice, message=FALSE}
+
+ccnodes <- read.csv("../cropchoicenodes.csv", sep=";", header=TRUE, as.is = TRUE) # stringsAsFactors = FALSE
+cclinks <- read.csv("../cropchoicelinks.csv", sep=";", header=TRUE, as.is = TRUE)
+
+vis.ccnodes <- ccnodes
+vis.cclinks <- cclinks
+
+vis.ccnodes$shape  <- c("ellipse", "box")[ccnodes$node.type]
+vis.ccnodes$shadow <- FALSE # Nodes will drop shadow
+vis.ccnodes$title  <- ccnodes$short.definition
+vis.ccnodes$label  <- ccnodes$long.definition
+vis.ccnodes$borderWidth <- 1 # Node border width
+#vis.ccnodes$color.background <- iaesnodes$node.type
+#vis.ccnodes$color.background[c("challenge", "solution")] <- c("gold", "grey")
+vis.ccnodes$color.border <- "black"
+vis.ccnodes$color.highlight.background <- "lightgreen"
+vis.ccnodes$color.highlight.border <- "red"
+
+# edges
+vis.cclinks$color <- c("green", "red")[cclinks$color] #line color  
+vis.cclinks$width <- cclinks$weight*4 # line width
+vis.cclinks$arrows <- "middle" # arrows: 'from', 'to', or 'middle'
+vis.cclinks$smooth <- TRUE    # should the edges be curved?
+vis.cclinks$shadow <- FALSE    # edge shadow
+vis.cclinks$color <- c("green", "red")[cclinks$color] #line color  
+
+visNetwork(vis.ccnodes, vis.cclinks) 
+
+
+```
+
+
+
+
+## Forest via visNetwork
+```{r Varietal choice, message=FALSE, echo=FALSE}
+
+varchoicenodes <- read.csv("../varchoicenodes.csv", sep=";", header=TRUE, as.is = TRUE) # stringsAsFactors = FALSE
+varchoicelinks <- read.csv("../varchoicelinks.csv", sep=";", header=TRUE, as.is = TRUE)
+
+vis.varchoicenodes <- varchoicenodes
+vis.varchoicelinks <- varchoicelinks
+
+vis.varchoicenodes$shape  <- c("ellipse", "box")[varchoicenodes$node.type]
+vis.varchoicenodes$shadow <- FALSE # Nodes will drop shadow
+vis.varchoicenodes$title  <- varchoicenodes$short.definition
+vis.varchoicenodes$label  <- varchoicenodes$long.definition
+vis.varchoicenodes$borderWidth <- 1 # Node border width
+vis.varchoicenodes$color.background <- c("gold", "grey")[varchoicenodes$node.type]
+vis.varchoicenodes$color.border <- "black"
+vis.varchoicenodes$color.highlight.background <- "lightgreen"
+vis.varchoicenodes$color.highlight.border <- "red"
+
+# edges
+vis.varchoicelinks$width <- varchoicelinks$weight*4 # line width
+vis.varchoicelinks$color <- c("green", "red")[varchoicelinks$color] #  
+vis.varchoicelinks$arrows <- "middle" # arrows: 'from', 'to', or 'middle'
+vis.varchoicelinks$smooth <- TRUE    # should the edges be curved?
+vis.varchoicelinks$shadow <- FALSE    # edge shadow
+
+visNetwork(vis.varchoicenodes, vis.varchoicelinks)
+
+```
+
+
+
+## Forest via visNetwork
+```{r Forest, message=FALSE}
+
+soilnodes <- read.csv("../wtsnodes.csv", sep=";", header=TRUE, as.is = TRUE) # stringsAsFactors = FALSE
+soillinks <- read.csv("../wtslinks.csv", sep=";", header=TRUE, as.is = TRUE)
+
+vis.soilnodes <- soilnodes
+vis.soillinks <- soillinks
+
+vis.soilnodes$shape  <- c("ellipse", "box")[soilnodes$node.type]
+vis.soilnodes$shadow <- FALSE # Nodes will drop shadow
+vis.soilnodes$title  <- soilnodes$short.definition
+vis.soilnodes$label  <- soilnodes$long.definition
+vis.soilnodes$borderWidth <- 1 # Node border width
+vis.soilnodes$color.background <- c("gold", "grey")[soilnodes$node.type]
+vis.soilnodes$color.border <- "black"
+vis.soilnodes$color.highlight.background <- "lightgreen"
+vis.soilnodes$color.highlight.border <- "red"
+
+# edges
+vis.soillinks$width <- soillinks$weight*4 # line width
+vis.soillinks$color <- c("green", "red")[soillinks$color] #"green"    # line color  
+vis.soillinks$arrows <- "middle" # arrows: 'from', 'to', or 'middle'
+vis.soillinks$smooth <- TRUE    # should the edges be curved?
+vis.soillinks$shadow <- FALSE    # edge shadow
+
+
+
+visNetwork(vis.soilnodes, vis.soillinks) 
 
 ```
 

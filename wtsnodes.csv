@@ -1,0 +1,14 @@
+id;node.type;com_solution;short.definition;long.definition
+n900;challenge;Biodiversity;Biodiversity;Biodiversity
+n901;challenge;Production;Production;Production
+n902;challenge;Crop protection;Crop protection;Crop protection
+n903;challenge;GHG Emissions;GHG Emissions;Greenhouse Gas Emissions
+n904;challenge;Pollution;Pollution;Pollution
+n905;challenge;Soil fertility;Soil fertility;Soil fertility
+n906;challenge;Targeted biodiversity;Targeted biodiversity;Targeted biodiversity
+n071;solution;Working the soil;Conservation tillage;Working the soil: Conservation tillage
+n072;solution;Working the soil;Labor;Working the soil: Labor
+n073;solution;Working the soil;Promote conservation tillage (less often & less deep);Working the soil: Promote conservation tillage (less often & less deep)
+n074;solution;Working the soil;Reduced field turnover (1 year in 5);Working the soil: Reduced field turnover (1 year in 5)
+n075;solution;Working the soil;Reduced intensity;Working the soil: Reduced intensity
+n076;solution;Working the soil;Regrowth management;Working the soil: Regrowth management

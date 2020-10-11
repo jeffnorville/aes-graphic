@@ -1,0 +1,24 @@
+id;node.type;com_solution;short.definition;long.definition
+n900;challenge;Biodiversity;Biodiversity;Biodiversity
+n901;challenge;Production;Production;Production
+n902;challenge;Crop protection;Crop protection;Crop protection
+n903;challenge;GHG Emissions;GHG Emissions;Greenhouse Gas Emissions
+n904;challenge;Pollution;Pollution;Pollution
+n905;challenge;Soil fertility;Soil fertility;Soil fertility
+n906;challenge;Targeted biodiversity;Targeted biodiversity;Targeted biodiversity
+n002;solution;Crop choice;Crop selection for decreased N demand;Crop choice: Crop selection for decreased N demand
+n003;solution;Crop choice;Crop selection for lower pesticide demand;Crop choice: Crop selection for lower pesticide demand
+n004;solution;Crop choice;Crop selection for yield / production (or specific benefit);Crop choice: Crop selection for yield / production (or specific benefit)
+n005;solution;Crop choice;Crop selection to reduce irrigation dependency, heat sensitivity;Crop choice: Crop selection to reduce irrigation dependency, heat sensitivity
+n006;solution;Crop choice;Decrease susceptible crop year N;Crop choice: Decrease susceptible crop year N
+n007;solution;Crop choice;Decrease susceptible crop year N-1;Crop choice: Decrease susceptible crop year N-1
+n008;solution;Crop choice;Grow / increase legumes in temporary grasslands;Crop choice: Grow / increase legumes in temporary grasslands
+n009;solution;Crop choice;Increase diversification of cultures (landscape composition);Crop choice: Increase diversification of cultures (landscape composition)
+n010;solution;Crop choice;Increase the duration of crop rotations and temporal diversity;Crop choice: Increase the duration of crop rotations and temporal diversity
+n011;solution;Crop choice;Increase the sown area of legumes in field crops;Crop choice: Increase the sown area of legumes in field crops
+n012;solution;Crop choice;Increasing percentage of legumes in crop rotation;Crop choice: Increasing percentage of legumes in crop rotation
+n013;solution;Crop choice;Landscape configuration to increase connectivity;Crop choice: Landscape configuration to increase connectivity
+n014;solution;Crop choice;Organic farming practices;Crop choice: Organic farming practices
+n015;solution;Crop choice;Organic matter, soil structure (cover crops);Crop choice: Organic matter, soil structure (cover crops)
+n016;solution;Crop choice;Reduced sown area of potato, beet and rapeseed;Crop choice: Reduced sown area of potato, beet and rapeseed
+n017;solution;Crop choice;Use intermediate crops in cropping system;Crop choice: Use intermediate crops in cropping system
