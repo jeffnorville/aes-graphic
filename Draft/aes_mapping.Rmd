@@ -19,7 +19,7 @@ I've changed to reading csv files in, as the objects in R really don't appreciat
 Second -- the "from/to" design is designed to help use arrows, but now I realise arrows will obscure the green / red idea -- which seems important, particularly in the meta-images.
 
 
-```{r message=FALSE echo=FALSE}
+```{r message=FALSE, echo=FALSE}
 #library(readxl)
 library(igraph)
 
@@ -37,7 +37,7 @@ plot(net)
 ```
 
 ## Nicer layout with "physics"
-```{r message=FALSE echo=FALSE}
+```{r All parts, message=FALSE, echo=FALSE}
 library("visNetwork") 
 vis.aesnodes <- aesnodes
 vis.aeslinks <- aeslinks
@@ -168,7 +168,7 @@ visNetwork(vis.ccnodes, vis.cclinks)
 
 
 
-## Forest via visNetwork
+## Varietal choice via visNetwork
 ```{r Varietal choice, message=FALSE, echo=FALSE}
 
 varchoicenodes <- read.csv("../varchoicenodes.csv", sep=";", header=TRUE, as.is = TRUE) # stringsAsFactors = FALSE
@@ -200,8 +200,8 @@ visNetwork(vis.varchoicenodes, vis.varchoicelinks)
 
 
 
-## Forest via visNetwork
-```{r Forest, message=FALSE}
+## Working the soil via visNetwork
+```{r Working the soil, message=FALSE}
 
 soilnodes <- read.csv("../wtsnodes.csv", sep=";", header=TRUE, as.is = TRUE) # stringsAsFactors = FALSE
 soillinks <- read.csv("../wtslinks.csv", sep=";", header=TRUE, as.is = TRUE)
