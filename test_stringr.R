@@ -25,12 +25,14 @@ aeslinks$color <- aeslinks$color + 1 # bump 0_based array to 1 based
 vis.aesnodes <- aesnodes
 vis.aeslinks <- aeslinks
 #vis.aesnodes$shape  <- c("ellipse", "box")[aesnodes$node.type]
-vis.aesnodes$shape <- str_replace(aesnodes$node.type, "challenge", "box")
-vis.aesnodes$shape <- str_replace(aesnodes$node.type, "solution", "ellipse")
+vis.aesnodes$shape <- aesnodes$node.type
+vis.aesnodes$shape <- str_replace(vis.aesnodes$shape, "challenge", "box")
+vis.aesnodes$shape <- str_replace(vis.aesnodes$shape, "solution", "ellipse")
 
 #vis.aesnodes$color.background <- c("lightgrey", "gold")[aesnodes$node.type]
-vis.aesnodes$color <- str_replace(aesnodes$node.type, "challenge", "lightgrey")
-vis.aesnodes$color <- str_replace(aesnodes$node.type, "solution", "gold")
+vis.aesnodes$color <- aesnodes$node.type
+vis.aesnodes$color <- str_replace(vis.aesnodes$color, "challenge", "lightgrey")
+vis.aesnodes$color <- str_replace(vis.aesnodes$color, "solution", "gold")
 
 #vis.aesnodes$shape  <- aesnodes$node.type
 vis.aesnodes$shadow <- TRUE # Nodes will drop shadow
