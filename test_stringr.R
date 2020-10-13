@@ -15,9 +15,9 @@ library("visNetwork")
 library("stringr")
 
 # play with nodes
-#vis.aesnodes <- aesnodes
-#vis.aeslinks <- aeslinks
-#visNetwork(vis.aesnodes, vis.aeslinks)
+vis.aesnodes <- aesnodes
+vis.aeslinks <- aeslinks
+visNetwork(vis.aesnodes, vis.aeslinks)
 
 aeslinks$color <- aeslinks$color + 1 # bump 0_based array to 1 based 
 
@@ -34,11 +34,11 @@ vis.aesnodes$color <- aesnodes$node.type
 vis.aesnodes$color <- str_replace(vis.aesnodes$color, "challenge", "lightgrey")
 vis.aesnodes$color <- str_replace(vis.aesnodes$color, "solution", "gold")
 
-#vis.aesnodes$shape  <- aesnodes$node.type
 vis.aesnodes$shadow <- TRUE # Nodes will drop shadow
 vis.aesnodes$title  <- aesnodes$long.definition
 vis.aesnodes$label  <- aesnodes$short.definition
-vis.aesnodes$borderWidth <- 2 # Node border width
+vis.aesnodes$borderWidth <- 1 # Node border width
+
 vis.aesnodes$color.border <- "black"
 vis.aesnodes$color.highlight.background <- "lightgreen"
 vis.aesnodes$color.highlight.border <- "red"

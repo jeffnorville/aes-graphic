@@ -11,11 +11,11 @@
 #
 
 library(shiny)
-library(networkD3)
+library(visNetwork)
 
 shinyUI(fluidPage( 
     
-    titlePanel("Synthises of AES Workbook"), 
+    titlePanel("Syntesis of AES Workbook"), 
     
     sidebarLayout(
         sidebarPanel(
@@ -26,6 +26,7 @@ shinyUI(fluidPage(
                         value = 0.4)
         ),
         mainPanel(
-            forceNetworkOutput(outputId = "net")
+            visNetworkOutput("aes network"),
+            verbatimTextOutput("shiny_return")
         )
     )))

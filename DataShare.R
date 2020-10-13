@@ -5,7 +5,7 @@ library(igraph)    #graph_from_data_frame()
 
 ## cleanup
 rm(list = ls()) 
-
+setwd(dir = "C:/Users/Norville/Documents/R/aes-graphic")
 
 ### grab changes to D1.1 Table database tab
 
@@ -20,6 +20,7 @@ aes_links <- read_excel("C:/Users/Norville/Dropbox/API-SMAL_Partage_Animation/Li
 aes_nodes <- read_excel("C:/Users/Norville/Dropbox/API-SMAL_Partage_Animation/Livrables/D1.1_List_of_AES_English.xlsm",
                         sheet = "nodes", skip = 1)
 ### simpler to do by csv for now
+
 aeslinks <- read.csv("aeslinks.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
 aesnodes <- read.csv("aesnodes.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
 # aesnodes <- unique(aesnodes, incomparables = FALSE) # false issue
@@ -38,23 +39,28 @@ vis.aeslinks <- aeslinks
 visNetwork(vis.aesnodes, vis.aeslinks)
 
 #distinct(aesnodes, node.type)
-distinct(vis.aesnodes, shape)
+# distinct(vis.aesnodes, shape)
 
 #clean up nodes
 
-vis.aesnodes$shape
-vis.aesnodes$shape <- aesnodes$node.type
+#vis.aesnodes$shape <- NULL
+#vis.aesnodes$shape <- aesnodes$node.type
+#vis.aesnodes$shape[c("challenge", "solution")] <- c("box", "ellipse")
+
 #gsub("solution", "ellipse", vis.aesnodes$shape)
 #gsub("challenge", "box", vis.aesnodes$shape)
 vis.aesnodes["shape"]
 
+aesnodes$node.type # howto convert that into a node shape
 vis.aesnodes$shape[c()]
 
-vis.aesnodes$shape[c(1, 2)] <- c("ellipse", "box")
-#vis.aesnodes$shape  <- c("ellipse", "box")[aesnodes$node.type]
+
+#vis.aesnodes$shape[c(1, 2)] <- c("ellipse", "box")
+vis.aesnodes$shape <- aesnodes$node.type
+#vis.aesnodes$shape  <- c("ellipse", "box")[vis.aesnodes$shape]
 vis.aesnodes$shadow <- TRUE # Nodes will drop shadow
-vis.aesnodes$title  <- aesnodes$short.definition
-vis.aesnodes$label  <- aesnodes$long.definition
+vis.aesnodes$title  <- aesnodes$long.definition
+vis.aesnodes$label  <- aesnodes$short.definition
 vis.aesnodes$borderWidth <- 2 # Node border width
 vis.aesnodes$color.background <- c("lightgrey", "gold")[aesnodes$node.type]
 vis.aesnodes$color.border <- "black"

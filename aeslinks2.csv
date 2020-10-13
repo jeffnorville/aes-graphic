@@ -1,0 +1,163 @@
+from;to;type;group;label;color;weight
+n001;n900;link;Crop choice;++;1;2
+n002;n900;link;Crop choice;+;1;1
+n004;n902;link;Crop choice;+;1;1
+n005;n902;link;Crop choice;++;1;1
+n006;n902;link;Crop choice;+;1;2
+n007;n902;link;Crop choice;+;1;1
+n008;n902;link;Crop choice;+;1;1
+n010;n902;link;Crop choice;++;1;1
+n011;n902;link;Crop choice;+;1;1
+n012;n902;link;Crop choice;++;1;2
+n013;n903;link;Crop choice;++;1;1
+n014;n903;link;Crop choice;++;1;2
+n015;n904;link;Crop choice;++;1;2
+n016;n904;link;Crop choice;+;1;2
+n017;n904;link;Crop choice;+;1;2
+n018;n904;link;Crop choice;+;1;1
+n019;n904;link;Crop choice;++;1;1
+n020;n904;link;Crop choice;+;1;1
+n022;n901;link;Crop choice;+;1;2
+n023;n905;link;Crop choice;++;1;1
+n024;n905;link;Crop choice;+;1;1
+n026;n906;link;Crop choice;+;1;2
+n027;n906;link;Crop choice;++;1;1
+n028;n906;link;Crop choice;++;1;1
+n029;n906;link;Crop choice;++;1;1
+n030;n906;link;Crop choice;+;1;2
+n031;n906;link;Crop choice;+;1;2
+n032;n906;link;Crop choice;++;1;2
+n034;n906;link;Crop choice;+;1;1
+n035;n900;link;Crop choice;++;1;1
+n036;n902;link;Crop choice;+;1;2
+n038;n903;link;Crop choice;++;1;1
+n039;n904;link;Crop choice;+;1;2
+n040;n903;link;Crop choice;++;1;1
+n041;n901;link;Forest;+;1;1
+n042;n905;link;Forest;++;1;2
+n043;n906;link;Forest;++;1;1
+n044;n900;link;Forest;++;1;2
+n045;n902;link;Forest;+;1;1
+n047;n902;link;Forest;+;1;2
+n049;n902;link;Forest;+;1;2
+n053;n904;link;Forest;++;1;2
+n054;n903;link;Forest;+;1;1
+n055;n903;link;Infrastructure AE;+;1;1
+n056;n903;link;Infrastructure AE;+;1;1
+n057;n904;link;Infrastructure AE;+;1;0
+n058;n904;link;Infrastructure AE;+;1;1
+n060;n905;link;Infrastructure AE;++;1;1
+n061;n906;link;Infrastructure AE;++;1;0
+n062;n906;link;Infrastructure AE;++;1;0
+n063;n906;link;Infrastructure AE;+;1;2
+n064;n906;link;Infrastructure AE;+;1;1
+n065;n906;link;Infrastructure AE;+;1;1
+n066;n906;link;Infrastructure AE;+;1;1
+n067;n906;link;Infrastructure AE;+;1;1
+n068;n906;link;Infrastructure AE;++;1;1
+n069;n906;link;Infrastructure AE;++;1;0
+n070;n906;link;Infrastructure AE;+;1;2
+n071;n906;link;Infrastructure AE;++;1;2
+n072;n906;link;Infrastructure AE;+;1;2
+n073;n906;link;Infrastructure AE;+;1;1
+n074;n900;link;Infrastructure AE;+;1;1
+n079;n905;link;Infrastructure AE;+;1;1
+n083;n904;link;Infrastructure AE;+;1;1
+n084;n904;link;Infrastructure AE;+;1;1
+n085;n901;link;Infrastructure AE;+;1;2
+n086;n905;link;Infrastructure AE;++;1;2
+n090;n902;link;Infrastructure AE;+;1;1
+n091;n904;link;Infrastructure AE;+;1;2
+n092;n904;link;Infrastructure AE;++;1;1
+n093;n904;link;Infrastructure AE;+;1;1
+n095;n905;link;Infrastructure AE;+;1;1
+n101;n900;link;Infrastructure AE;+;1;0
+n107;n901;link;Intermediate crops;+;1;0
+n109;n906;link;Intermediate crops;++;1;1
+n110;n906;link;Intermediate crops;+;1;0
+n111;n900;link;Intermediate crops;++;1;1
+n112;n900;link;Intermediate crops;+;1;0
+n113;n900;link;Intermediate crops;++;1;2
+n114;n900;link;Intermediate crops;+;1;1
+n116;n902;link;Livestock;+;1;1
+n117;n902;link;Livestock;+;1;1
+n119;n904;link;Livestock;+++;1;1
+n121;n905;link;Livestock;+;1;1
+n122;n906;link;Livestock;+;1;2
+n123;n906;link;Livestock;+;1;1
+n124;n906;link;Livestock;++;1;2
+n125;n906;link;Livestock;++;1;2
+n126;n900;link;Livestock;+++;1;1
+n127;n902;link;Nitrogen addition;+;1;1
+n129;n904;link;Nitrogen addition;++;1;1
+n130;n903;link;Nitrogen addition;++;1;2
+n134;n901;link;Nitrogen addition;++;1;1
+n135;n905;link;Nitrogen addition;++;1;2
+n136;n906;link;Nitrogen addition;+;1;1
+n137;n906;link;Nitrogen addition;+;1;1
+n138;n906;link;Nitrogen addition;++;1;1
+n141;n902;link;Nitrogen addition;++;1;1
+n142;n902;link;Nitrogen addition;++;1;0
+n143;n902;link;Nitrogen addition;+;1;1
+n144;n902;link;Nitrogen addition;+;1;1
+n146;n904;link;Nitrogen addition;+;1;1
+n147;n901;link;Nitrogen addition;++;1;1
+n149;n906;link;Nitrogen addition;++;1;1
+n150;n906;link;Nitrogen addition;+;1;1
+n151;n900;link;Parcel size;+;1;1
+n152;n902;link;Parcel size;+;1;1
+n154;n902;link;Parcel size;++;1;2
+n155;n902;link;Parcel size;+;1;1
+n157;n904;link;Parcel size;++;1;2
+n158;n903;link;Parcel size;+;1;1
+n159;n904;link;Parcel size;++;1;2
+n162;n905;link;Parcel size;+;1;1
+n163;n906;link;Parcel size;+;1;2
+n164;n900;link;Parcel size;+;1;1
+n165;n904;link;Pesticide use;++;1;1
+n166;n904;link;Pesticide use;+;1;2
+n169;n903;link;Pesticide use;+;1;3
+n900;n081;link;Pesticide use;--;2;2
+n900;n088;link;Pesticide use;--;2;1
+n900;n102;link;Pesticide use;-;2;1
+n900;n139;link;Pesticide use;0;3;1
+n901;n167;link;Pesticide use;-;2;2
+n901;n059;link;Pesticide use;0;3;2
+n901;n078;link;Pesticide use;0;3;3
+n901;n094;link;Pesticide use;-;2;1
+n901;n120;link;Pesticide use;--;2;1
+n901;n133;link;Pesticide use;-;2;2
+n901;n160;link;Pesticide use;-;2;2
+n902;n009;link;Pesticide use;-;2;2
+n902;n037;link;Prairies;-;2;2
+n902;n046;link;Prairies;-;2;1
+n902;n048;link;Prairies;0;3;2
+n902;n050;link;Prairies;-;2;2
+n902;n051;link;Prairies;0;3;1
+n902;n052;link;Prairies;?;3;1
+n902;n075;link;Prairies;0;3;2
+n902;n082;link;Prairies;-;2;0
+n902;n089;link;Prairies;-;2;0
+n902;n168;link;Prairies;-;2;2
+n902;n104;link;Prairies;-;2;2
+n902;n115;link;Prairies;--;2;1
+n902;n118;link;Prairies;--;2;1
+n902;n128;link;Varietal choice;-;2;1
+n902;n140;link;Varietal choice;0;3;1
+n902;n153;link;Varietal choice;-;2;2
+n904;n076;link;Varietal choice;0;3;0
+n904;n077;link;Varietal choice;-;2;2
+n904;n131;link;Varietal choice;--;2;1
+n904;n132;link;Varietal choice;--;2;1
+n904;n145;link;Varietal choice;-;2;1
+n904;n156;link;Varietal choice;--;2;1
+n905;n108;link;Varietal choice;-;2;2
+n905;n148;link;Varietal choice;0;3;1
+n905;n161;link;Varietal choice;--;2;2
+n906;n025;link;Working the soil;-;2;2
+n906;n080;link;Working the soil;0;3;1
+n906;n087;link;Working the soil;--;2;2
+n906;n097;link;Working the soil;0;3;1
+n906;n098;link;Working the soil;-;2;2
+n906;n099;link;Working the soil;-;2;1
+n906;n100;link;Working the soil;-;2;1
