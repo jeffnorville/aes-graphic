@@ -1,6 +1,7 @@
 ---
 title: "Notes to AES Figures"
 author: "Jeff Norville"
+theme: "simplex"
 bibliography: C:/Users/Norville/Documents/Bibliotheque/INRA-2018.bib
 #bibliography: "C:/Users/Jeff Norville/Documents/Mendeley Bibtex/INRA-2018.bib"
 output: 
@@ -12,11 +13,20 @@ link-citations: yes
 biblio-style: apalike
 ---
 
+<!-- remember to install distill at home https://rstudio.github.io/distill/ -->
+
 ## Mapping out the D1.1 Table
 
 I've changed to reading in a csv file instead of the Excel directly, as the objects in R really don't appreciate the spaces Excel sometimes obliges.
 
 Table A is now pulls values from Table D1.1, so a change to the text in D1.1 filters through Table A and, with an export, to these figures.
+
+Question for users:
+ - I find the arrows redundant to colors
+ - in some cases they even conflict
+ - the "node:link" architecture forces us to use "direction" (as complex relationships are allowed), but in instances with ? or 0 we don't want an arrow
+ - in those cases it's easier to just rely on color
+ 
 
 ```{r message=FALSE, echo=FALSE}
 #library(readxl)
@@ -31,7 +41,7 @@ library(igraph)
 aeslinks <- read.csv("../aeslinks.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
 aesnodes <- read.csv("../aesnodes.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
 net <- graph_from_data_frame(d=aeslinks, vertices=aesnodes, directed=TRUE)
-plot(net)
+plot(net, layout = layout_with_lgl, label = aesnodes$short.definition)
 
 ```
 
@@ -58,7 +68,7 @@ vis.aesnodes$color.highlight.border <- "red"
 vis.aeslinks$width <- aeslinks$weight*3 # line width
 vis.aeslinks$dashes <- aeslinks$type #c(TRUE, FALSE)[aeslinks$type]
 #vis.aeslinks$color <- c("green", "red", "black")[aeslinks$color]  
-vis.aeslinks$arrows <- "middle"
+#vis.aeslinks$arrows <- FALSE #"middle"
 vis.aeslinks$smooth <- FALSE    # should the edges be curved?
 vis.aeslinks$shadow <- FALSE    # edge shadow
 vis.aeslinks$labelHighlightBold <- TRUE
@@ -91,7 +101,7 @@ vis.ccnodes$color.highlight.border <- "red"
 # edges
 vis.cclinks$color <- c("green", "red", "slategrey")[cclinks$color] #line color  
 vis.cclinks$width <- cclinks$weight*4 # line width
-vis.cclinks$arrows <- "middle" # arrows: 'from', 'to', or 'middle'
+# vis.cclinks$arrows <- "middle" # arrows: 'from', 'to', or 'middle'
 vis.cclinks$smooth <- TRUE    # should the edges be curved?
 vis.cclinks$shadow <- FALSE    # edge shadow
 #vis.cclinks$color <- c("green", "red")[cclinks$color] #line color  
@@ -149,7 +159,7 @@ vis.varchoicenodes$color.highlight.border <- "red"
 # edges
 vis.varchoicelinks$width <- varchoicelinks$weight*4 # line width
 vis.varchoicelinks$color <- c("green", "red", "slategrey")[varchoicelinks$color] #  
-vis.varchoicelinks$arrows <- "middle" # arrows: 'from', 'to', or 'middle'
+# vis.varchoicelinks$arrows <- "middle" # arrows: 'from', 'to', or 'middle'
 vis.varchoicelinks$smooth <- TRUE    # should the edges be curved?
 vis.varchoicelinks$shadow <- FALSE    # edge shadow
 
@@ -191,7 +201,7 @@ vis.forestnodes$color.highlight.border <- "red"
 # edges
 vis.forestlinks$width <- forestlinks$weight*4 # line width
 vis.forestlinks$color <- c("green", "red", "slategrey")[forestlinks$color]
-vis.forestlinks$arrows <- "middle" # arrows: 'from', 'to', or 'middle'
+# vis.forestlinks$arrows <- "middle" # arrows: 'from', 'to', or 'middle'
 vis.forestlinks$smooth <- TRUE    # should the edges be curved?
 vis.forestlinks$shadow <- FALSE    # edge shadow
 
