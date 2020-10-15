@@ -15,20 +15,26 @@ d11 <- read_excel("C:/Users/Norville/Dropbox/API-SMAL_Partage_Animation/Livrable
                   sheet = "database", skip = 1)
 d11$com_solution
 
-aes_links <- read_excel("C:/Users/Norville/Dropbox/API-SMAL_Partage_Animation/Livrables/D1.1_List_of_AES_English.xlsm",
-                  sheet = "links", skip = 1)
-aes_nodes <- read_excel("C:/Users/Norville/Dropbox/API-SMAL_Partage_Animation/Livrables/D1.1_List_of_AES_English.xlsm",
-                        sheet = "nodes", skip = 1)
-### simpler to do by csv for now
+# aes_links <- read_excel("C:/Users/Norville/Dropbox/API-SMAL_Partage_Animation/Livrables/D1.1_List_of_AES_English.xlsm",
+#                   sheet = "links", skip = 1)
+# aes_nodes <- read_excel("C:/Users/Norville/Dropbox/API-SMAL_Partage_Animation/Livrables/D1.1_List_of_AES_English.xlsm",
+#                         sheet = "nodes", skip = 1)
 
+### simpler to do by csv for now
 aeslinks <- read.csv("aeslinks.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
 aesnodes <- read.csv("aesnodes.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
 # aesnodes <- unique(aesnodes, incomparables = FALSE) # false issue
 
+# SUBSET will do the trick
+# chlngcomsdefs <- aesnodes[which(aesnodes$node.type=="challenge", names(aesnodes) %in% c("com_solution", "long.definition"))] #dunno why subsetting with which doesn't work, maybe can't be on a textfield?
+chlngcomsdef2 <- subset(aesnodes, node.type == "challenge", select = c("com_solution", "long.definition"))
+
+
+
 ## igraph method
 library(igraph)
 net <- graph_from_data_frame(d=aeslinks, vertices=aesnodes, directed=T) 
-plot(net)
+plot(net, layout = layout_with_lgl, label = aesnodes$short.definition)
 
 ## visNetwork prettier and has more edge options
 library("visNetwork") 

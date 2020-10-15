@@ -41,11 +41,14 @@ library(igraph)
 aeslinks <- read.csv("../aeslinks.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
 aesnodes <- read.csv("../aesnodes.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
 net <- graph_from_data_frame(d=aeslinks, vertices=aesnodes, directed=TRUE)
-plot(net, layout = layout_with_lgl, label = aesnodes$short.definition)
+# plot(net, layout = layout_with_lgl, label = aesnodes$short.definition)
+plot(net)
+
+
 
 ```
 
-## visNetwork version
+## visNetwork with node ids only 
 
 This layout is easier to zoom in and out to read labels, as well as make link directions more clear. Presenting all links in one diagram is a bit crowded.
 
@@ -54,24 +57,42 @@ library("visNetwork")
 library(stringr)
 vis.aesnodes <- aesnodes
 vis.aeslinks <- aeslinks
-#vis.aesnodes$shape  <- c("ellipse", "box")[aesnodes$node.type]
-vis.aesnodes$shape  <- aesnodes$node.type
-vis.aesnodes$title  <- aesnodes$long.definition
-vis.aesnodes$label  <- aesnodes$short.definition
+vis.aesnodes$shape <- aesnodes$node.type
+vis.aesnodes$shape <- str_replace(vis.aesnodes$shape, "challenge", "box")
+vis.aesnodes$shape <- str_replace(vis.aesnodes$shape, "solution", "ellipse")
+vis.aesnodes$color <- aesnodes$node.type
+vis.aesnodes$color <- str_replace(vis.aesnodes$color, "challenge", "lightgrey")
+vis.aesnodes$color <- str_replace(vis.aesnodes$color, "solution", "gold")
+
 vis.aesnodes$shadow <- TRUE # Nodes will drop shadow
-vis.aesnodes$borderWidth <- 2 # Node border width
-#vis.aesnodes$color.background <- c("lightgrey", "gold")[aesnodes$node.type]
-vis.aesnodes$color.border <- "black"
-vis.aesnodes$color.highlight.background <- "lightgreen"
-vis.aesnodes$color.highlight.border <- "red"
+vis.aesnodes$label  <- aesnodes$id
+#vis.aesnodes$label  <- aesnodes$short.definition
+vis.aesnodes$title  <- aesnodes$long.definition
+vis.aesnodes$borderWidth <- 1 
+
+# vis.aesnodes$color.border <- "black"
+# vis.aesnodes$color.highlight.background <- "lightgreen"
+# vis.aesnodes$color.highlight.border <- "red"
 
 vis.aeslinks$width <- aeslinks$weight*3 # line width
 vis.aeslinks$dashes <- aeslinks$type #c(TRUE, FALSE)[aeslinks$type]
-#vis.aeslinks$color <- c("green", "red", "black")[aeslinks$color]  
-#vis.aeslinks$arrows <- FALSE #"middle"
+vis.aeslinks$color <- c("green", "red", "slategrey")[aeslinks$color]  
+#vis.aeslinks$arrows <- "middle"
 vis.aeslinks$smooth <- FALSE    # should the edges be curved?
 vis.aeslinks$shadow <- FALSE    # edge shadow
 vis.aeslinks$labelHighlightBold <- TRUE
+
+
+
+visNetwork(vis.aesnodes, vis.aeslinks)
+```
+
+
+Same diagram with short names shown:
+
+```{r All parts longer description, message=FALSE, echo=FALSE}
+
+vis.aesnodes$label  <- aesnodes$short.definition
 
 visNetwork(vis.aesnodes, vis.aeslinks)
 ```
@@ -252,7 +273,7 @@ vis.iaesnodes$color.border <- "black"
 # edges
 vis.iaeslinks$color <- c("green", "red", "slategrey")[iaeslinks$color] #line color  
 vis.iaeslinks$width <- iaeslinks$weight*4 # line width
-vis.iaeslinks$arrows <- "middle" # arrows: 'from', 'to', or 'middle'
+#vis.iaeslinks$arrows <- "middle" # arrows: 'from', 'to', or 'middle'
 # NB arrows when weight is zero will cause confusion
 vis.iaeslinks$smooth <- TRUE    # should the edges be curved?
 vis.iaeslinks$shadow <- FALSE    # edge shadow
@@ -299,7 +320,7 @@ vis.soilnodes$color.highlight.border <- "red"
 # edges
 vis.soillinks$width <- soillinks$weight*4 # line width
 vis.soillinks$color <- c("green", "red", "slategrey")[soillinks$color] #"green"    # line color  
-vis.soillinks$arrows <- "middle" # arrows: 'from', 'to', or 'middle'
+#vis.soillinks$arrows <- "middle" # arrows: 'from', 'to', or 'middle'
 vis.soillinks$smooth <- TRUE    # should the edges be curved?
 vis.soillinks$shadow <- FALSE    # edge shadow
 
@@ -312,9 +333,6 @@ visNetwork(vis.soilnodes, vis.soillinks)
 
 ## Discussion
 
-I made the "links" flow from the positive toward the negative, which may be redundant with colors. 
-
-Need to clarify type of object using shapes, fixing now.
 
 
 =======

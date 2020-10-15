@@ -1,84 +1,114 @@
-id;node.type;com_solution;short.definition;long.definition
-n900;challenge;Biodiversity;Biodiversity;Biodiversity
-n901;challenge;Production;Production;Production
-n902;challenge;Crop protection;Crop protection;Crop protection
-n903;challenge;GHG Emissions;GHG Emissions;Greenhouse Gas Emissions
-n904;challenge;Pollution;Pollution;Pollution
-n905;challenge;Soil fertility;Soil fertility;Soil fertility
-n906;challenge;Targeted biodiversity;Targeted biodiversity;Targeted biodiversity
-n001;solution;Crop choice;Conventional farming practices (combo of practices);Crop choice: Conventional farming practices (combo of practices)
-n002;solution;Crop choice;Crop selection for decreased N demand;Crop choice: Crop selection for decreased N demand
-n003;solution;Crop choice;Crop selection for lower pesticide demand;Crop choice: Crop selection for lower pesticide demand
-n004;solution;Crop choice;Crop selection for yield / production (or specific benefit);Crop choice: Crop selection for yield / production (or specific benefit)
-n005;solution;Crop choice;Crop selection to reduce irrigation dependency, heat sensitivity;Crop choice: Crop selection to reduce irrigation dependency, heat sensitivity
-n006;solution;Crop choice;Decrease susceptible crop year N;Crop choice: Decrease susceptible crop year N
-n007;solution;Crop choice;Decrease susceptible crop year N-1;Crop choice: Decrease susceptible crop year N-1
-n008;solution;Crop choice;Grow / increase legumes in temporary grasslands;Crop choice: Grow / increase legumes in temporary grasslands
-n009;solution;Crop choice;Increase diversification of cultures (landscape composition);Crop choice: Increase diversification of cultures (landscape composition)
-n010;solution;Crop choice;Increase the duration of crop rotations and temporal diversity;Crop choice: Increase the duration of crop rotations and temporal diversity
-n011;solution;Crop choice;Increase the sown area of legumes in field crops;Crop choice: Increase the sown area of legumes in field crops
-n012;solution;Crop choice;Increasing percentage of legumes in crop rotation;Crop choice: Increasing percentage of legumes in crop rotation
-n013;solution;Crop choice;Landscape configuration to increase connectivity;Crop choice: Landscape configuration to increase connectivity
-n014;solution;Crop choice;Organic farming practices;Crop choice: Organic farming practices
-n015;solution;Crop choice;Organic matter, soil structure (cover crops);Crop choice: Organic matter, soil structure (cover crops)
-n016;solution;Crop choice;Reduced sown area of potato, beet and rapeseed;Crop choice: Reduced sown area of potato, beet and rapeseed
-n017;solution;Crop choice;Use intermediate crops in cropping system;Crop choice: Use intermediate crops in cropping system
-n018;solution;Forest;Forests located near ag plots;Forest: Forests located near ag plots
-n019;solution;Forest;Replanting cropland with forests;Forest: Replanting cropland with forests
-n020;solution;Forest;Woodland presence;Forest: Woodland presence
-n021;solution;Infrastructure AE;Addition of flower strips (wild mixes, nectar and pollen-rich, annuals);Infrastructure AE: Addition of flower strips (wild mixes, nectar and pollen-rich, annuals)
-n022;solution;Infrastructure AE;Addition of grass bordures (grass field/waterway margins, grass strips, grassland strips, managed grass strips);Infrastructure AE: Addition of grass bordures (grass field/waterway margins, grass strips, grassland strips, managed grass strips)
-n023;solution;Infrastructure AE;Addition of wooded islands / hedges (forest, woodlands, edges, forest edges, hedgerows);Infrastructure AE: Addition of wooded islands / hedges (forest, woodlands, edges, forest edges, hedgerows)
-n024;solution;Infrastructure AE;Augment semi-natural elements (SNEs);Infrastructure AE: Augment semi-natural elements (SNEs)
-n025;solution;Infrastructure AE;Develop hedges adjacent to agricultural plots;Infrastructure AE: Develop hedges adjacent to agricultural plots
-n026;solution;Infrastructure AE;Grass strips;Infrastructure AE: Grass strips
-n027;solution;Infrastructure AE;Hedges;Infrastructure AE: Hedges
-n028;solution;Infrastructure AE;Increase landscape connectivity by adjusting the spatial configuration of SNH;Infrastructure AE: Increase landscape connectivity by adjusting the spatial configuration of SNH
-n029;solution;Infrastructure AE;Increase life duration of temporary prairies;Infrastructure AE: Increase life duration of temporary prairies
-n030;solution;Infrastructure AE;Manipulation of the presence / proportion of SNHs;Infrastructure AE: Manipulation of the presence / proportion of SNHs
-n031;solution;Infrastructure AE;Return to fallow / meadow / shrublands;Infrastructure AE: Return to fallow / meadow / shrublands
-n032;solution;Infrastructure AE;Use mulch to increase soil richness;Infrastructure AE: Use mulch to increase soil richness
-n033;solution;Infrastructure AE;Woodland (SNE);Infrastructure AE: Woodland (SNE)
-n034;solution;Intermediate crops;Cover crops;Intermediate crops: Cover crops
-n035;solution;Intermediate crops;Cover crops (generally for wheat);Intermediate crops: Cover crops (generally for wheat)
-n036;solution;Intermediate crops;Target cover crops;Intermediate crops: Target cover crops
-n037;solution;Livestock;Increased grazing / livestock presence;Livestock: Increased grazing / livestock presence
-n038;solution;Livestock;Integrated crop-livestock systems;Livestock: Integrated crop-livestock systems
-n039;solution;Livestock;Manage ruminant intake to reduce H20 and CH4 emissions and excretions;Livestock: Manage ruminant intake to reduce H20 and CH4 emissions and excretions
-n040;solution;Livestock;Use of livestock manure;Livestock: Use of livestock manure
-n041;solution;Nitrogen addition;Biomass input (crop residues);Nitrogen addition: Biomass input (crop residues)
-n042;solution;Nitrogen addition;Grazing livestock, direct application of manure;Nitrogen addition: Grazing livestock, direct application of manure
-n043;solution;Nitrogen addition;Increase the proportion of legumes in arable crops and temporary grassland;Nitrogen addition: Increase the proportion of legumes in arable crops and temporary grassland
-n044;solution;Nitrogen addition;Organic farming practices;Nitrogen addition: Organic farming practices
-n045;solution;Nitrogen addition;Reduce nitrate fertilization;Nitrogen addition: Reduce nitrate fertilization
-n046;solution;Nitrogen addition;Reduce the dose of mineral fertilizer by better adjusting expectation of yield;Nitrogen addition: Reduce the dose of mineral fertilizer by better adjusting expectation of yield
-n047;solution;Nitrogen addition;Reduce use of nitrate fertilizers;Nitrogen addition: Reduce use of nitrate fertilizers
-n048;solution;Parcel size;Addition of grass bordures (grass field/waterway margins, grass strips, grassland strips, managed grass strips);Parcel size: Addition of grass bordures (grass field/waterway margins, grass strips, grassland strips, managed grass strips)
-n049;solution;Parcel size;Increase parcel size;Parcel size: Increase parcel size
-n050;solution;Parcel size;Increase parcel size (may require more tillage);Parcel size: Increase parcel size (may require more tillage)
-n051;solution;Parcel size;Increased automation associated with large farms  causes more pollution;Parcel size: Increased automation associated with large farms  causes more pollution
-n052;solution;Parcel size;Parcel shape;Parcel size: Parcel shape
-n053;solution;Parcel size;Reduce Parcel size;Parcel size: Reduce Parcel size
-n054;solution;Pesticide use;Reduce fungicide use (treating septoria of wheat and phoma of rapeseed only);Pesticide use: Reduce fungicide use (treating septoria of wheat and phoma of rapeseed only)
-n055;solution;Pesticide use;Reduce herbicide use for selective weed management;Pesticide use: Reduce herbicide use for selective weed management
-n056;solution;Pesticide use;Reduce insecticide application around field edges;Pesticide use: Reduce insecticide application around field edges
-n057;solution;Pesticide use;Reduce insecticide use;Pesticide use: Reduce insecticide use
-n058;solution;Pesticide use;Reduce pesticide use;Pesticide use: Reduce pesticide use
-n059;solution;Pesticide use;Stop herbicide use (no selective weed management);Pesticide use: Stop herbicide use (no selective weed management)
-n060;solution;Prairies;Adding grasslands to Landscape (meadows, pastures, permanent grasslands, semi-natural grasslands);Prairies: Adding grasslands to Landscape (meadows, pastures, permanent grasslands, semi-natural grasslands)
-n061;solution;Prairies;Prairie (vs cropland);Prairies: Prairie (vs cropland)
-n062;solution;Varietal choice;Abundance of susceptible varietal year N;Varietal choice: Abundance of susceptible varietal year N
-n063;solution;Varietal choice;Abundance of susceptible varietal year N-1;Varietal choice: Abundance of susceptible varietal year N-1
-n064;solution;Varietal choice;Crop type has an influence on soil health;Varietal choice: Crop type has an influence on soil health
-n065;solution;Varietal choice;Distribution of the proportion of crops in each plot;Varietal choice: Distribution of the proportion of crops in each plot
-n066;solution;Varietal choice;Increase diversity of varietals (spatial diversity);Varietal choice: Increase diversity of varietals (spatial diversity)
-n067;solution;Varietal choice;Mixed varietals;Varietal choice: Mixed varietals
-n068;solution;Varietal choice;Resistant varieties (use fewer pesticides / fungicides);Varietal choice: Resistant varieties (use fewer pesticides / fungicides)
-n069;solution;Varietal choice;Target variety choice to reduce loss risk from disease AND for adaptivity to climate regime;Varietal choice: Target variety choice to reduce loss risk from disease AND for adaptivity to climate regime
-n070;solution;Varietal choice;Varietal diversity / intra-plot genetics (varietal association);Varietal choice: Varietal diversity / intra-plot genetics (varietal association)
-n071;solution;Working the soil;Conservation tillage;Working the soil: Conservation tillage
-n072;solution;Working the soil;Labor;Working the soil: Labor
-n073;solution;Working the soil;Promote conservation tillage (less often & less deep);Working the soil: Promote conservation tillage (less often & less deep)
-n074;solution;Working the soil;Reduced field turnover (1 year in 5);Working the soil: Reduced field turnover (1 year in 5)
-n075;solution;Working the soil;Reduced intensity;Working the soil: Reduced intensity
-n076;solution;Working the soil;Regrowth management;Working the soil: Regrowth management
+id;node.type;com_solution;short.definition;long.definition;node.type.id
+n900;challenge;Biodiversity;Biodiversity;Biodiversity;1
+n901;challenge;Production;Production;Production;1
+n902;challenge;Crop protection;Crop protection;Crop protection;1
+n903;challenge;GHG Emissions;GHG Emissions;GHG Emissions;1
+n904;challenge;Pollution;Pollution;Pollution;1
+n905;challenge;Soil fertility;Soil fertility;Soil fertility;1
+n906;challenge;Targeted biodiversity;Targeted biodiversity;Targeted biodiversity;1
+n001;solution;Crop choice;Increase diversification of cultures (landscape composition);Crop choice: Increase diversification of cultures (landscape composition);2
+n002;solution;Crop choice;Decrease susceptible crop year N;Crop choice: Decrease susceptible crop year N;2
+n003;solution;Crop choice;Decrease susceptible crop year N-1;Crop choice: Decrease susceptible crop year N-1;2
+n004;solution;Crop choice;Increase the duration of crop rotations and temporal diversity;Crop choice: Increase the duration of crop rotations and temporal diversity;2
+n005;solution;Crop choice;Grow / increase legumes in temporary grasslands;Crop choice: Grow / increase legumes in temporary grasslands;2
+n006;solution;Crop choice;Increase life duration of temporary prairies;Crop choice: Increase life duration of temporary prairies;2
+n007;solution;Crop choice;Use intermediate crops in cropping system;Crop choice: Use intermediate crops in cropping system;2
+n008;solution;Crop choice;Crop selection for decreased N demand;Crop choice: Crop selection for decreased N demand;2
+n009;solution;Crop choice;Crop selection for lower pesticide demand;Crop choice: Crop selection for lower pesticide demand;2
+n010;solution;Crop choice;Increase diversification of cultures (landscape composition);Crop choice: Increase diversification of cultures (landscape composition);2
+n011;solution;Crop choice;Increase the sown area of legumes in field crops;Crop choice: Increase the sown area of legumes in field crops;2
+n012;solution;Crop choice;Reduced sown area of potato, beet and rapeseed;Crop choice: Reduced sown area of potato, beet and rapeseed;2
+n013;solution;Crop choice;Crop selection for yield / production (or specific benefit);Crop choice: Crop selection for yield / production (or specific benefit);2
+n014;solution;Crop choice;Crop selection to reduce irrigation dependency, heat sensitivity;Crop choice: Crop selection to reduce irrigation dependency, heat sensitivity;2
+n015;solution;Crop choice;Increase diversification of cultures (landscape composition);Crop choice: Increase diversification of cultures (landscape composition);2
+n016;solution;Crop choice;Increasing percentage of legumes in crop rotation;Crop choice: Increasing percentage of legumes in crop rotation;2
+n017;solution;Crop choice;Organic matter, soil structure (cover crops);Crop choice: Organic matter, soil structure (cover crops);2
+n018;solution;Crop choice;Use mulch to increase soil richness;Crop choice: Use mulch to increase soil richness;2
+n019;solution;Crop choice;Conventional farming practices (combo of practices);Crop choice: Conventional farming practices (combo of practices);2
+n020;solution;Crop choice;Increase diversification of cultures (landscape composition);Crop choice: Increase diversification of cultures (landscape composition);2
+n021;solution;Crop choice;Increase the duration of crop rotations and temporal diversity;Crop choice: Increase the duration of crop rotations and temporal diversity;2
+n022;solution;Crop choice;Landscape configuration to increase connectivity;Crop choice: Landscape configuration to increase connectivity;2
+n023;solution;Crop choice;Organic farming practices;Crop choice: Organic farming practices;2
+n024;solution;Crop choice;Return to fallow / meadow / shrublands;Crop choice: Return to fallow / meadow / shrublands;2
+n025;solution;Forest;Forests located near ag plots;Forest: Forests located near ag plots;2
+n026;solution;Forest;Woodland presence;Forest: Woodland presence;2
+n027;solution;Forest;Forests located near ag plots;Forest: Forests located near ag plots;2
+n028;solution;Forest;Replanting cropland with forests;Forest: Replanting cropland with forests;2
+n029;solution;Forest;Forests located near ag plots;Forest: Forests located near ag plots;2
+n030;solution;Forest;Replanting cropland with forests;Forest: Replanting cropland with forests;2
+n031;solution;Forest;Forests located near ag plots;Forest: Forests located near ag plots;2
+n032;solution;Forest;Replanting cropland with forests;Forest: Replanting cropland with forests;2
+n033;solution;Infrastructure AE;Augment semi-natural elements (SNEs);Infrastructure AE: Augment semi-natural elements (SNEs);2
+n034;solution;Infrastructure AE;Addition of grass bordures (grass field/waterway margins, grass strips, grassland strips, managed grass strips);Infrastructure AE: Addition of grass bordures (grass field/waterway margins, grass strips, grassland strips, managed grass strips);2
+n035;solution;Infrastructure AE;Addition of wooded islands / hedges (forest, woodlands, edges, forest edges, hedgerows);Infrastructure AE: Addition of wooded islands / hedges (forest, woodlands, edges, forest edges, hedgerows);2
+n036;solution;Infrastructure AE;Develop hedges adjacent to agricultural plots;Infrastructure AE: Develop hedges adjacent to agricultural plots;2
+n037;solution;Infrastructure AE;Addition of grass bordures (grass field/waterway margins, grass strips, grassland strips, managed grass strips);Infrastructure AE: Addition of grass bordures (grass field/waterway margins, grass strips, grassland strips, managed grass strips);2
+n038;solution;Infrastructure AE;Addition of wooded islands / hedges (forest, woodlands, edges, forest edges, hedgerows);Infrastructure AE: Addition of wooded islands / hedges (forest, woodlands, edges, forest edges, hedgerows);2
+n039;solution;Infrastructure AE;Develop hedges adjacent to agricultural plots;Infrastructure AE: Develop hedges adjacent to agricultural plots;2
+n040;solution;Infrastructure AE;Addition of grass bordures (grass field/waterway margins, grass strips, grassland strips, managed grass strips);Infrastructure AE: Addition of grass bordures (grass field/waterway margins, grass strips, grassland strips, managed grass strips);2
+n041;solution;Infrastructure AE;Addition of flower strips (wild mixes, nectar and pollen-rich, annuals);Infrastructure AE: Addition of flower strips (wild mixes, nectar and pollen-rich, annuals);2
+n042;solution;Infrastructure AE;Addition of grass bordures (grass field/waterway margins, grass strips, grassland strips, managed grass strips);Infrastructure AE: Addition of grass bordures (grass field/waterway margins, grass strips, grassland strips, managed grass strips);2
+n043;solution;Infrastructure AE;Addition of wooded islands / hedges (forest, woodlands, edges, forest edges, hedgerows);Infrastructure AE: Addition of wooded islands / hedges (forest, woodlands, edges, forest edges, hedgerows);2
+n044;solution;Infrastructure AE;Increase landscape connectivity by adjusting the spatial configuration of SNH;Infrastructure AE: Increase landscape connectivity by adjusting the spatial configuration of SNH;2
+n045;solution;Infrastructure AE;Manipulation of the presence / proportion of SNHs;Infrastructure AE: Manipulation of the presence / proportion of SNHs;2
+n046;solution;Intermediate crops;Cover crops;Intermediate crops: Cover crops;2
+n047;solution;Intermediate crops;Target cover crops;Intermediate crops: Target cover crops;2
+n048;solution;Intermediate crops;Cover crops;Intermediate crops: Cover crops;2
+n049;solution;Intermediate crops;Cover crops (generally for wheat);Intermediate crops: Cover crops (generally for wheat);2
+n050;solution;Intermediate crops;Cover crops;Intermediate crops: Cover crops;2
+n051;solution;Livestock;Increased grazing / livestock presence;Livestock: Increased grazing / livestock presence;2
+n052;solution;Livestock;Integrated crop-livestock systems;Livestock: Integrated crop-livestock systems;2
+n053;solution;Livestock;Manage ruminant intake to reduce H20 and CH4 emissions and excretions;Livestock: Manage ruminant intake to reduce H20 and CH4 emissions and excretions;2
+n054;solution;Livestock;Use of livestock manure;Livestock: Use of livestock manure;2
+n055;solution;Livestock;Integrated crop-livestock systems;Livestock: Integrated crop-livestock systems;2
+n056;solution;Livestock;Use of livestock manure;Livestock: Use of livestock manure;2
+n057;solution;Livestock;Increased grazing / livestock presence;Livestock: Increased grazing / livestock presence;2
+n058;solution;Nitrogen addition;Increase biomass input through crop residues;Nitrogen addition: Increase biomass input through crop residues;2
+n059;solution;Nitrogen addition;Reduce use of chemical nitrate fertilizers;Nitrogen addition: Reduce use of chemical nitrate fertilizers;2
+n060;solution;Nitrogen addition;Increase biomass input through crop residues;Nitrogen addition: Increase biomass input through crop residues;2
+n061;solution;Nitrogen addition;Increase the proportion of legumes in arable crops and temporary grassland;Nitrogen addition: Increase the proportion of legumes in arable crops and temporary grassland;2
+n062;solution;Nitrogen addition;Reduce the dose of mineral fertilizer by better adjusting expectation of yield;Nitrogen addition: Reduce the dose of mineral fertilizer by better adjusting expectation of yield;2
+n063;solution;Nitrogen addition;Reduce use of chemical nitrate fertilizers;Nitrogen addition: Reduce use of chemical nitrate fertilizers;2
+n064;solution;Nitrogen addition;Increase biomass input through crop residues;Nitrogen addition: Increase biomass input through crop residues;2
+n065;solution;Nitrogen addition;Organic farming practices;Nitrogen addition: Organic farming practices;2
+n066;solution;Nitrogen addition;Reduce nitrate fertilization;Nitrogen addition: Reduce nitrate fertilization;2
+n067;solution;Nitrogen addition;Reduce use of chemical nitrate fertilizers;Nitrogen addition: Reduce use of chemical nitrate fertilizers;2
+n068;solution;Parcel size;Reduce parcel size;Parcel size: Reduce parcel size;2
+n069;solution;Parcel size;Reduce parcel size and increase complexity;Parcel size: Reduce parcel size and increase complexity;2
+n070;solution;Parcel size;Parcel shape;Parcel size: Parcel shape;2
+n071;solution;Parcel size;Reduce parcel size;Parcel size: Reduce parcel size;2
+n072;solution;Parcel size;Increased automation associated with large farms  causes more pollution;Parcel size: Increased automation associated with large farms  causes more pollution;2
+n073;solution;Parcel size;Parcel shape;Parcel size: Parcel shape;2
+n074;solution;Parcel size;Reduce parcel size;Parcel size: Reduce parcel size;2
+n075;solution;Parcel size;Reduce parcel size and increase complexity;Parcel size: Reduce parcel size and increase complexity;2
+n076;solution;Pesticide use;Reduce pesticide use;Pesticide use: Reduce pesticide use;2
+n077;solution;Pesticide use;Reduce fungicide use (treating septoria of wheat and phoma of rapeseed only);Pesticide use: Reduce fungicide use (treating septoria of wheat and phoma of rapeseed only);2
+n078;solution;Pesticide use;Reduce insecticide use;Pesticide use: Reduce insecticide use;2
+n079;solution;Pesticide use;Reduce pesticide use;Pesticide use: Reduce pesticide use;2
+n080;solution;Pesticide use;Reduce herbicide use for selective weed management;Pesticide use: Reduce herbicide use for selective weed management;2
+n081;solution;Pesticide use;Reduce pesticide use;Pesticide use: Reduce pesticide use;2
+n082;solution;Pesticide use;Reduce herbicide use for selective weed management;Pesticide use: Reduce herbicide use for selective weed management;2
+n083;solution;Pesticide use;Reduce insecticide application around field edges;Pesticide use: Reduce insecticide application around field edges;2
+n084;solution;Pesticide use;Reduce pesticide use;Pesticide use: Reduce pesticide use;2
+n085;solution;Pesticide use;Stop herbicide use (no selective weed management);Pesticide use: Stop herbicide use (no selective weed management);2
+n086;solution;Prairies;Prairie (vs cropland);Prairies: Prairie (vs cropland);2
+n087;solution;Prairies;Adding grasslands to Landscape (meadows, pastures, permanent grasslands, semi-natural grasslands);Prairies: Adding grasslands to Landscape (meadows, pastures, permanent grasslands, semi-natural grasslands);2
+n088;solution;Varietal choice;Distribution of the proportion of crops in each plot;Varietal choice: Distribution of the proportion of crops in each plot;2
+n089;solution;Varietal choice;Abundance of susceptible varietal year N;Varietal choice: Abundance of susceptible varietal year N;2
+n090;solution;Varietal choice;Abundance of susceptible varietal year N-1;Varietal choice: Abundance of susceptible varietal year N-1;2
+n091;solution;Varietal choice;Varietal diversity / intra-plot genetics (varietal association);Varietal choice: Varietal diversity / intra-plot genetics (varietal association);2
+n092;solution;Varietal choice;Mixed varietals;Varietal choice: Mixed varietals;2
+n093;solution;Varietal choice;Resistant varieties (use fewer pesticides / fungicides);Varietal choice: Resistant varieties (use fewer pesticides / fungicides);2
+n094;solution;Varietal choice;Target variety choice to reduce loss risk from disease AND for adaptivity to climate regime;Varietal choice: Target variety choice to reduce loss risk from disease AND for adaptivity to climate regime;2
+n095;solution;Varietal choice;Crop type has an influence on soil health;Varietal choice: Crop type has an influence on soil health;2
+n096;solution;Varietal choice;Increase diversity of varietals (spatial diversity);Varietal choice: Increase diversity of varietals (spatial diversity);2
+n097;solution;Working the soil;Conservation tillage;Working the soil: Conservation tillage;2
+n098;solution;Working the soil;Reduced tillage;Working the soil: Reduced tillage;2
+n099;solution;Working the soil;Reduced turnover increases disease risk;Working the soil: Reduced turnover increases disease risk;2
+n100;solution;Working the soil;Reduced tillage;Working the soil: Reduced tillage;2
+n101;solution;Working the soil;Conservation tillage;Working the soil: Conservation tillage;2
+n102;solution;Working the soil;Reduced frequency of tillage;Working the soil: Reduced frequency of tillage;2
+n103;solution;Working the soil;Reduced tillage;Working the soil: Reduced tillage;2
+n104;solution;Working the soil;Conservation tillage;Working the soil: Conservation tillage;2
+n105;solution;Working the soil;Reduced tillage;Working the soil: Reduced tillage;2
+n106;solution;Working the soil;Conservation tillage;Working the soil: Conservation tillage;2
