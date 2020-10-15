@@ -1,0 +1,60 @@
+---
+title: "Untitled"
+description: |
+  A new article created using the Distill format.
+author:
+  - name: Nora Jones 
+    url: https://example.com/norajones
+    affiliation: Spacely Sprockets
+    affiliation_url: https://example.com/spacelysprokets
+date: "`r Sys.Date()`"
+output: distill::distill_article
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(igraph)
+
+aeslinks <- read.csv("aeslinks.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
+aesnodes <- read.csv("aesnodes.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
+net <- graph_from_data_frame(d=aeslinks, vertices=aesnodes, directed=TRUE)
+plot(net, layout = layout_with_lgl, label = aesnodes$short.definition)
+
+
+```
+
+Distill is a publication format for scientific and technical writing, native to the web. 
+
+```{r All parts, message=FALSE, echo=FALSE}
+library("visNetwork") 
+library(stringr)
+vis.aesnodes <- aesnodes
+vis.aeslinks <- aeslinks
+#vis.aesnodes$shape  <- c("ellipse", "box")[aesnodes$node.type]
+vis.aesnodes$shape  <- aesnodes$node.type
+vis.aesnodes$title  <- aesnodes$long.definition
+vis.aesnodes$label  <- aesnodes$short.definition
+vis.aesnodes$shadow <- TRUE # Nodes will drop shadow
+vis.aesnodes$borderWidth <- 2 # Node border width
+#vis.aesnodes$color.background <- c("lightgrey", "gold")[aesnodes$node.type]
+vis.aesnodes$color.border <- "black"
+vis.aesnodes$color.highlight.background <- "lightgreen"
+vis.aesnodes$color.highlight.border <- "red"
+
+vis.aeslinks$width <- aeslinks$weight*3 # line width
+vis.aeslinks$dashes <- aeslinks$type #c(TRUE, FALSE)[aeslinks$type]
+#vis.aeslinks$color <- c("green", "red", "black")[aeslinks$color]  
+#vis.aeslinks$arrows <- FALSE #"middle"
+vis.aeslinks$smooth <- FALSE    # should the edges be curved?
+vis.aeslinks$shadow <- FALSE    # edge shadow
+vis.aeslinks$labelHighlightBold <- TRUE
+
+visNetwork(vis.aesnodes, vis.aeslinks)
+```
+
+Learn more about using Distill for R Markdown at <https://rstudio.github.io/distill>.
+
+
+
+
+
