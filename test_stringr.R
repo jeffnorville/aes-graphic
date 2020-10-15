@@ -56,16 +56,29 @@ ed_exp4 <- subset(education, Region == 2, select = c("State","Minor.Population",
 rm(toto)
 aesnodes$id
 
-toto <- subset(aesnodes, id = c("n900", "n901", "n902",  "n903", "n904", "n905", "n906"))
+toto <- subset(aesnodes, id == c("n900", "n901", "n902",  "n903", "n904", "n905", "n906"))
+
 head(toto)
 tail(toto)
 
+# why 901 not in the dataset?
 toto <- subset(aesnodes, com_solution == c("Biodiversity", 
                                            "Targeted biodiversity", 
                                            "Crop protection", 
                                            "GHG Emissions", 
                                            "Pollution", 
                                            "Soil fertility"))
+
+
+
+totolinks <- subset(aeslinks, group == c("Biodiversity", 
+                                          "Targeted biodiversity", 
+                                          "Crop protection", 
+                                          "GHG Emissions", 
+                                          "Pollution", 
+                                          "Soil fertility"))
+
+
 
 library(dplyr)
 distinct(aesnodes, com_solution)
