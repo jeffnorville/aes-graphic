@@ -67,11 +67,16 @@ toto <- subset(aesnodes, com_solution == c("Biodiversity",
                                            "Crop protection", 
                                            "GHG Emissions", 
                                            "Pollution", 
-                                           "Soil fertility"))
+                                           "Soil fertility",
+                                           "Crop choice"))
 
 
+head(aeslinks)
 
-totolinks <- subset(aeslinks, group == c("Biodiversity", 
+totolinks <- subset(aeslinks, group == "Crop choice")
+
+                      
+                      c("Biodiversity", 
                                           "Targeted biodiversity", 
                                           "Crop protection", 
                                           "GHG Emissions", 

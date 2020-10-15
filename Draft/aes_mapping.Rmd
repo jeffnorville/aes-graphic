@@ -102,11 +102,28 @@ visNetwork(vis.aesnodes, vis.aeslinks)
 ## Crop / Culture Choice
 ```{r Crop Choice, message=FALSE, echo=FALSE}
 
-ccnodes <- read.csv("../cropchoicenodes.csv", sep=";", header=TRUE, as.is = TRUE) # stringsAsFactors = FALSE
-cclinks <- read.csv("../cropchoicelinks.csv", sep=";", header=TRUE, as.is = TRUE)
+# ccnodes <- read.csv("../cropchoicenodes.csv", sep=";", header=TRUE, as.is = TRUE) # stringsAsFactors = FALSE
+# cclinks <- read.csv("../cropchoicelinks.csv", sep=";", header=TRUE, as.is = TRUE)
 
-vis.ccnodes <- ccnodes
-vis.cclinks <- cclinks
+vis.ccnodes <- subset(aesnodes, com_solution == c("Crop choice"))
+
+vis.ccnodes <- subset(aesnodes, com_solution == c("Crop choice",
+                                          "Biodiversity", 
+                                          "Targeted biodiversity", 
+                                          "Crop protection", 
+                                          "GHG Emissions", 
+                                          "Pollution", 
+                                          "Soil fertility"))
+
+head(aesnodes)
+
+vis.cclinks <- subset(aeslinks, group == "Crop choice")
+visNetwork(vis.ccnodes, vis.cclinks) 
+
+net <- graph_from_data_frame(d=vis.cclinks, vertices=vis.ccnodes, directed=TRUE)
+# plot(net, layout = layout_with_lgl, label = aesnodes$short.definition)
+plot(net)
+
 
 vis.ccnodes$shape  <- ccnodes$node.type
 vis.ccnodes$shadow <- FALSE # Nodes will drop shadow
