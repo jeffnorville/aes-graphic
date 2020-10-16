@@ -1,0 +1,18 @@
+id;node.type;com_solution;short.definition;long.definition
+n900;challenge;Biodiversity;Biodiversity;Biodiversity
+n901;challenge;Production;Production;Production
+n902;challenge;Crop protection;Crop protection;Crop protection
+n903;challenge;GHG Emissions;GHG Emissions;GHG Emissions
+n904;challenge;Pollution;Pollution;Pollution
+n905;challenge;Soil fertility;Soil fertility;Soil fertility
+n906;challenge;Targeted biodiversity;Targeted biodiversity;Targeted biodiversity
+n200;solution;Diversification: crop rotation;Diversification: crop rotation;Diversification: crop rotation
+n201;solution;Diversification: landscape composition, Increase varietal diversity;Diversification: landscape composition, Increase varietal diversity;Diversification: landscape composition, Increase varietal diversity
+n207;solution;Diversification: landscape structure;Diversification: landscape structure;Diversification: landscape structure
+n204;solution;Forest;Forest;Forest
+n202;solution;Infrastructure AE;Infrastructure AE;Infrastructure AE
+n205;solution;Livestock;Livestock;Livestock
+n203;solution;Prairies;Prairies;Prairies
+n206;solution;Reduce nitrogen additions;Reduce nitrogen additions;Reduce nitrogen additions
+n208;solution;Reduced applications (pesticide, insecticide, fungicide);Reduced applications (pesticide, insecticide, fungicide);Reduced applications (pesticide, insecticide, fungicide)
+n209;solution;Reduced turnover of soil;Reduced turnover of soil;Reduced turnover of soil

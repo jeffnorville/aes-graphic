@@ -6,9 +6,9 @@ aesnodes <- read.csv("aesnodes.csv", sep=";", header=TRUE, stringsAsFactors = FA
 # aesnodes <- unique(aesnodes, incomparables = FALSE) # false issue
 
 ## igraph method
-# library(igraph)
-# net <- graph_from_data_frame(d=aeslinks, vertices=aesnodes, directed=T) 
-# plot(net)
+ library(igraph)
+ net <- graph_from_data_frame(d=aeslinks, vertices=aesnodes, directed=T) 
+ plot(net)
 # 
 
 ## visNetwork prettier and has more edge options

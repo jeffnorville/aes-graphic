@@ -15,6 +15,57 @@ biblio-style: apalike
 
 <!-- remember to install distill at home https://rstudio.github.io/distill/ -->
 
+
+
+
+## Simplified figure
+
+ 
+
+```{r Simple fig, message=FALSE, echo=FALSE}
+#library(readxl)
+# library(igraph)
+
+simplinks <- read.csv("../simplifylinks.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
+simpnodes <- read.csv("../simplifynodes.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
+# net <- graph_from_data_frame(d=simplinks, vertices=simpnodes, directed=TRUE)
+# plot(net, layout = layout_with_lgl, label = simpnodes$short.definition)
+# plot(net)
+
+library("visNetwork") 
+library(stringr)
+vis.simpnodes <- simpnodes
+vis.simplinks <- simplinks
+vis.simpnodes$shape <- simpnodes$node.type
+vis.simpnodes$shape <- str_replace(vis.simpnodes$shape, "challenge", "box")
+vis.simpnodes$shape <- str_replace(vis.simpnodes$shape, "solution", "ellipse")
+vis.simpnodes$color <- simpnodes$node.type
+vis.simpnodes$color <- str_replace(vis.simpnodes$color, "challenge", "lightgrey")
+vis.simpnodes$color <- str_replace(vis.simpnodes$color, "solution", "gold")
+
+vis.simpnodes$shadow <- TRUE # Nodes will drop shadow
+#vis.simpnodes$label  <- simpnodes$id
+vis.simpnodes$label  <- simpnodes$short.definition
+vis.simpnodes$title  <- simpnodes$long.definition
+vis.simpnodes$borderWidth <- 1 
+
+# vis.simpnodes$color.border <- "black"
+# vis.simpnodes$color.highlight.background <- "lightgreen"
+# vis.simpnodes$color.highlight.border <- "red"
+
+vis.simplinks$width <- simplinks$weight*3 # line width
+vis.simplinks$dashes <- simplinks$type #c(TRUE, FALSE)[aeslinks$type]
+vis.simplinks$color <- c("green", "red", "slategrey")[simplinks$color]  
+#vis.simplinks$arrows <- "middle"
+vis.simplinks$smooth <- TRUE    # should the edges be curved?
+vis.simplinks$shadow <- FALSE    # edge shadow
+vis.simplinks$labelHighlightBold <- TRUE
+
+visNetwork(vis.simpnodes, vis.simplinks)
+
+```
+
+
 ## Mapping out the D1.1 Table
 
 I've changed to reading in a csv file instead of the Excel directly, as the objects in R really don't appreciate the spaces Excel sometimes obliges.
@@ -28,7 +79,7 @@ Question for users:
  - in those cases it's easier to just rely on color
  
 
-```{r message=FALSE, echo=FALSE}
+```{r AES Figure, message=FALSE, echo=FALSE}
 #library(readxl)
 library(igraph)
 
@@ -40,9 +91,9 @@ library(igraph)
 
 aeslinks <- read.csv("../aeslinks.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
 aesnodes <- read.csv("../aesnodes.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
-net <- graph_from_data_frame(d=aeslinks, vertices=aesnodes, directed=TRUE)
-# plot(net, layout = layout_with_lgl, label = aesnodes$short.definition)
-plot(net)
+# net <- graph_from_data_frame(d=aeslinks, vertices=aesnodes, directed=TRUE)
+# # plot(net, layout = layout_with_lgl, label = aesnodes$short.definition)
+# plot(net)
 
 
 
