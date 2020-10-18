@@ -1,0 +1,165 @@
+from;to;group;challenge;label;color;weight
+n001;n906;Crop choice;Targeted biodiversity;+;1;1
+n002;n904;Crop choice;Pollution;+;1;1
+n003;n904;Crop choice;Pollution;+;1;1
+n004;n901;Crop choice;Production;0;3;0
+n006;n902;Crop choice;Crop protection;+;1;1
+n006;n902;Crop choice;Crop protection;++;1;2
+n006;n902;Crop choice;Crop protection;+;1;1
+n006;n902;Crop choice;Crop protection;+;1;1
+n007;n902;Crop choice;Crop protection;++;1;2
+n007;n902;Crop choice;Crop protection;+;1;1
+n007;n902;Crop choice;Crop protection;+;1;1
+n007;n902;Crop choice;Crop protection;-;2;1
+n008;n903;Crop choice;GHG Emissions;++;1;2
+n009;n900;Crop choice;Biodiversity;+;1;1
+n009;n900;Crop choice;Biodiversity;++;1;2
+n009;n904;Crop choice;Pollution;++;1;2
+n009;n901;Crop choice;Production;-;2;1
+n009;n906;Crop choice;Targeted biodiversity;++;1;2
+n009;n906;Crop choice;Targeted biodiversity;++;1;2
+n009;n906;Crop choice;Targeted biodiversity;++;1;2
+n010;n903;Crop choice;GHG Emissions;+;1;1
+n011;n902;Crop choice;Crop protection;++;1;2
+n011;n906;Crop choice;Targeted biodiversity;+;1;1
+n011;n906;Crop choice;Targeted biodiversity;-;2;1
+n011;n906;Crop choice;Targeted biodiversity;+;1;1
+n012;n904;Crop choice;Pollution;+;1;1
+n013;n905;Crop choice;Soil fertility;++;1;2
+n014;n906;Crop choice;Targeted biodiversity;+;1;1
+n014;n906;Crop choice;Targeted biodiversity;+;1;1
+n016;n905;Crop choice;Soil fertility;+;1;1
+n017;n904;Crop choice;Pollution;++;1;2
+n017;n904;Crop choice;Pollution;+;1;1
+n018;n906;Crop choice;Targeted biodiversity;+;1;1
+n018;n906;Crop choice;Targeted biodiversity;+;1;1
+n019;n903;Crop choice;GHG Emissions;++;1;2
+n020;n905;Crop choice;Soil fertility;++;1;2
+n021;n900;Forest;Biodiversity;++;1;2
+n021;n903;Forest;GHG Emissions;++;1;2
+n021;n904;Forest;Pollution;+;1;1
+n021;n905;Forest;Soil fertility;++;1;2
+n022;n903;Forest;GHG Emissions;++;1;2
+n022;n901;Forest;Production;+;1;1
+n022;n906;Forest;Targeted biodiversity;++;1;2
+n023;n902;Forest;Crop protection;+;1;1
+n023;n902;Forest;Crop protection;-;2;1
+n024;n906;Infrastructure AE;Targeted biodiversity;++;1;2
+n024;n906;Infrastructure AE;Targeted biodiversity;++;1;2
+n025;n902;Infrastructure AE;Crop protection;+;1;1
+n025;n902;Infrastructure AE;Crop protection;-;2;1
+n025;n902;Infrastructure AE;Crop protection;0;3;0
+n025;n903;Infrastructure AE;GHG Emissions;+;1;1
+n025;n903;Infrastructure AE;GHG Emissions;+;1;1
+n025;n904;Infrastructure AE;Pollution;+;1;1
+n025;n901;Infrastructure AE;Production;0;3;0
+n025;n906;Infrastructure AE;Targeted biodiversity;+;1;1
+n025;n906;Infrastructure AE;Targeted biodiversity;+;1;1
+n026;n902;Infrastructure AE;Crop protection;?;3;#N/A
+n026;n904;Infrastructure AE;Pollution;+;1;1
+n026;n906;Infrastructure AE;Targeted biodiversity;+;1;1
+n026;n906;Infrastructure AE;Targeted biodiversity;+;1;1
+n027;n900;Infrastructure AE;Biodiversity;++;1;2
+n028;n902;Infrastructure AE;Crop protection;+;1;1
+n028;n902;Infrastructure AE;Crop protection;0;3;0
+n028;n902;Infrastructure AE;Crop protection;+;1;1
+n028;n902;Infrastructure AE;Crop protection;-;2;1
+n028;n904;Infrastructure AE;Pollution;++;1;2
+n029;n906;Infrastructure AE;Targeted biodiversity;+;1;1
+n029;n906;Infrastructure AE;Targeted biodiversity;++;1;2
+n030;n906;Infrastructure AE;Targeted biodiversity;++;1;2
+n030;n906;Infrastructure AE;Targeted biodiversity;+;1;1
+n030;n906;Infrastructure AE;Targeted biodiversity;++;1;2
+n031;n900;Intermediate crops;Biodiversity;+;1;1
+n031;n904;Intermediate crops;Pollution;0;3;0
+n031;n904;Intermediate crops;Pollution;-;2;1
+n031;n905;Intermediate crops;Soil fertility;+;1;1
+n031;n906;Intermediate crops;Targeted biodiversity;0;3;0
+n032;n901;Intermediate crops;Production;0;3;0
+n033;n902;Intermediate crops;Crop protection;0;3;0
+n034;n900;Livestock;Biodiversity;--;2;2
+n034;n900;Livestock;Biodiversity;+;1;1
+n034;n900;Livestock;Biodiversity;--;2;2
+n034;n906;Livestock;Targeted biodiversity;-;2;1
+n035;n902;Livestock;Crop protection;-;2;1
+n035;n905;Livestock;Soil fertility;+;1;1
+n036;n903;Livestock;GHG Emissions;-;2;1
+n037;n904;Livestock;Pollution;+;1;1
+n037;n904;Livestock;Pollution;+;1;1
+n037;n901;Livestock;Production;+;1;1
+n037;n905;Livestock;Soil fertility;++;1;2
+n038;n902;Nitrogen addition;Crop protection;-;2;1
+n038;n903;Nitrogen addition;GHG Emissions;+;1;1
+n038;n905;Nitrogen addition;Soil fertility;+;1;1
+n039;n904;Nitrogen addition;Pollution;++;1;2
+n041;n906;Nitrogen addition;Targeted biodiversity;-;2;1
+n041;n906;Nitrogen addition;Targeted biodiversity;-;2;1
+n042;n904;Nitrogen addition;Pollution;+;1;1
+n043;n902;Nitrogen addition;Crop protection;-;2;1
+n043;n902;Nitrogen addition;Crop protection;+;1;1
+n043;n904;Nitrogen addition;Pollution;+;1;1
+n043;n904;Nitrogen addition;Pollution;++;1;2
+n043;n901;Nitrogen addition;Production;-;2;1
+n043;n906;Nitrogen addition;Targeted biodiversity;0;3;0
+n043;n906;Nitrogen addition;Targeted biodiversity;-;2;1
+n046;n900;Parcel size;Biodiversity;+;1;1
+n046;n902;Parcel size;Crop protection;+;1;1
+n046;n901;Parcel size;Production;-;2;1
+n046;n905;Parcel size;Soil fertility;-;2;1
+n046;n906;Parcel size;Targeted biodiversity;+;1;1
+n047;n900;Parcel size;Biodiversity;+;1;1
+n047;n906;Parcel size;Targeted biodiversity;++;1;2
+n048;n902;Pesticide use;Crop protection;--;2;2
+n049;n901;Pesticide use;Production;-;2;1
+n049;n906;Pesticide use;Targeted biodiversity;+;1;1
+n050;n906;Pesticide use;Targeted biodiversity;++;1;2
+n051;n902;Pesticide use;Crop protection;--;2;2
+n051;n902;Pesticide use;Crop protection;+;1;1
+n051;n902;Pesticide use;Crop protection;+;1;1
+n052;n900;Pesticide use;Biodiversity;++;1;2
+n052;n900;Pesticide use;Biodiversity;+;1;1
+n052;n900;Pesticide use;Biodiversity;++;1;2
+n052;n900;Pesticide use;Biodiversity;+;1;1
+n052;n904;Pesticide use;Pollution;+++;1;3
+n052;n901;Pesticide use;Production;--;2;2
+n052;n905;Pesticide use;Soil fertility;+;1;1
+n052;n906;Pesticide use;Targeted biodiversity;++;1;2
+n053;n906;Pesticide use;Targeted biodiversity;+;1;1
+n054;n906;Prairies;Targeted biodiversity;++;1;2
+n054;n906;Prairies;Targeted biodiversity;+;1;1
+n054;n906;Prairies;Targeted biodiversity;+;1;1
+n055;n900;Prairies;Biodiversity;+++;1;3
+n055;n902;Prairies;Crop protection;+;1;1
+n055;n902;Prairies;Crop protection;-;2;1
+n055;n903;Prairies;GHG Emissions;++;1;2
+n055;n904;Prairies;Pollution;++;1;2
+n055;n904;Prairies;Pollution;--;2;2
+n055;n904;Prairies;Pollution;--;2;2
+n055;n901;Prairies;Production;-;2;1
+n055;n901;Prairies;Production;++;1;2
+n055;n905;Prairies;Soil fertility;++;1;2
+n056;n902;Varietal choice;Crop protection;0;3;0
+n056;n902;Varietal choice;Crop protection;++;1;2
+n057;n902;Varietal choice;Crop protection;+;1;1
+n057;n902;Varietal choice;Crop protection;++;1;2
+n058;n905;Varietal choice;Soil fertility;0;3;0
+n059;n900;Varietal choice;Biodiversity;0;3;0
+n060;n906;Varietal choice;Targeted biodiversity;++;1;2
+n060;n906;Varietal choice;Targeted biodiversity;+;1;1
+n061;n904;Varietal choice;Pollution;+;1;1
+n062;n904;Varietal choice;Pollution;-;2;1
+n063;n901;Varietal choice;Production;++;1;2
+n064;n902;Varietal choice;Crop protection;+;1;1
+n065;n900;Working the soil;Biodiversity;+;1;1
+n065;n904;Working the soil;Pollution;--;2;2
+n065;n905;Working the soil;Soil fertility;-;2;1
+n065;n906;Working the soil;Targeted biodiversity;+;1;1
+n066;n904;Working the soil;Pollution;++;1;2
+n067;n902;Working the soil;Crop protection;+;1;1
+n067;n902;Working the soil;Crop protection;--;2;2
+n067;n902;Working the soil;Crop protection;-;2;1
+n067;n903;Working the soil;GHG Emissions;+;1;1
+n067;n904;Working the soil;Pollution;++;1;2
+n067;n901;Working the soil;Production;-;2;1
+n067;n905;Working the soil;Soil fertility;+;1;1
+n068;n902;Working the soil;Crop protection;-;2;1

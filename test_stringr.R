@@ -1,15 +1,16 @@
 ## cleanup
 rm(list = ls()) 
 
-aeslinks <- read.csv("aeslinks.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
-aesnodes <- read.csv("aesnodes.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
+aeslinks <- read.csv("aeslinks3.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
+aesnodes <- read.csv("aesnodes3.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
 # aesnodes <- unique(aesnodes, incomparables = FALSE) # false issue
 
 ## igraph method
  library(igraph)
  net <- graph_from_data_frame(d=aeslinks, vertices=aesnodes, directed=T) 
  plot(net)
-# 
+ plot(net, layout = layout_with_lgl, label = aesnodes$short.definition)
+ 
 
 ## visNetwork prettier and has more edge options
 library("visNetwork") 
@@ -70,8 +71,32 @@ toto <- subset(aesnodes, com_solution == c("Biodiversity",
                                            "Soil fertility",
                                            "Crop choice"))
 
+head(aesnodes)
+
+library(dplyr)
+toto2 <- select(filter(aesnodes,  com_solution == "Crop choice"),
+                                c(id, node.type, com_solution, long.definition, node.type.id))
+
+rm(toto3)
+toto3 <- select(filter(aesnodes,  com_solution %in% c("Crop choice",
+                                                   "Biodiversity", 
+                                                   "Targeted biodiversity", 
+                                                   "Crop protection", 
+                                                   "GHG Emissions", 
+                                                   "Pollution", 
+                                                   "Soil fertility",
+                                                   "Production")),
+               c(id, node.type, com_solution, long.definition, node.type.id))
+
+
+
+toto <- select(filter(aesnodes,  com_solution == "Crop choice"), 
+               c(id, node.type, com_solution, long.definition, node.type.id))
+                              
+                              
 
 head(aeslinks)
+head(aesnodes, 10)
 
 totolinks <- subset(aeslinks, group == "Crop choice")
 
