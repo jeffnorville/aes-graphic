@@ -1,17 +1,25 @@
 ## cleanup
 rm(list = ls()) 
 
-aeslinks <- read.csv("aeslinks3.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
-aesnodes <- read.csv("aesnodes3.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
+aeslinks <- read.csv("aeslinks.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
+aesnodes <- read.csv("aesnodes.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
 # aesnodes <- unique(aesnodes, incomparables = FALSE) # false issue
 
 ## igraph method
  library(igraph)
  net <- graph_from_data_frame(d=aeslinks, vertices=aesnodes, directed=T) 
  plot(net)
- plot(net, layout = layout_with_lgl, label = aesnodes$short.definition)
- 
+# 
 
+library(networkD3)
+ net_aes <- data.frame(aeslinks)
+ sankeyNetwork(
+         aeslinks,
+         aesnodes,
+         Value = "weight"
+ ) 
+ 
+ 
 ## visNetwork prettier and has more edge options
 library("visNetwork") 
 library("stringr")
@@ -45,11 +53,16 @@ vis.aeslinks$width <- aeslinks$weight*3 # line width
 vis.aeslinks$dashes <- aeslinks$type #c(TRUE, FALSE)[aeslinks$type]
 vis.aeslinks$color <- c("green", "red", "slategrey")[aeslinks$color]  
 #vis.aeslinks$arrows <- "middle"
-vis.aeslinks$smooth <- FALSE    # should the edges be curved?
+vis.aeslinks$smooth <- TRUE    # should the edges be curved?
 vis.aeslinks$shadow <- FALSE    # edge shadow
 vis.aeslinks$labelHighlightBold <- TRUE
 
-visNetwork(vis.aesnodes, vis.aeslinks)
+visNetwork(vis.aesnodes, vis.aeslinks) %>% 
+        visHierarchicalLayout(direction = "RL") %>%
+        visInteraction(dragNodes = TRUE,
+                       dragView = FALSE,
+                       zoomView = TRUE)
+
 
 # subset for "Crop choice"
 ed_exp4 <- subset(education, Region == 2, select = c("State","Minor.Population","Education.Expenditures"))
@@ -68,40 +81,11 @@ toto <- subset(aesnodes, com_solution == c("Biodiversity",
                                            "Crop protection", 
                                            "GHG Emissions", 
                                            "Pollution", 
-                                           "Soil fertility",
-                                           "Crop choice"))
-
-head(aesnodes)
-
-library(dplyr)
-toto2 <- select(filter(aesnodes,  com_solution == "Crop choice"),
-                                c(id, node.type, com_solution, long.definition, node.type.id))
-
-rm(toto3)
-toto3 <- select(filter(aesnodes,  com_solution %in% c("Crop choice",
-                                                   "Biodiversity", 
-                                                   "Targeted biodiversity", 
-                                                   "Crop protection", 
-                                                   "GHG Emissions", 
-                                                   "Pollution", 
-                                                   "Soil fertility",
-                                                   "Production")),
-               c(id, node.type, com_solution, long.definition, node.type.id))
+                                           "Soil fertility"))
 
 
 
-toto <- select(filter(aesnodes,  com_solution == "Crop choice"), 
-               c(id, node.type, com_solution, long.definition, node.type.id))
-                              
-                              
-
-head(aeslinks)
-head(aesnodes, 10)
-
-totolinks <- subset(aeslinks, group == "Crop choice")
-
-                      
-                      c("Biodiversity", 
+totolinks <- subset(aeslinks, group == c("Biodiversity", 
                                           "Targeted biodiversity", 
                                           "Crop protection", 
                                           "GHG Emissions", 
@@ -114,14 +98,3 @@ library(dplyr)
 distinct(aesnodes, com_solution)
 distinct(aesnodes, id)
 
-, "Crop choice" 
-
-        Production
-        Crop protection
-        GHG Emissions
-        Pollution
-        Soil fertility
-        Targeted biodiversity
-        Crop choice
-        
-tail(vis.aesnodes)

@@ -9,6 +9,24 @@ simpleNetwork(networkData)
 
 summary(networkData)
 
+# test aesdata
+setwd(dir = "C:/Users/Norville/Documents/R/aes-graphic")
+aeslinks <- read.csv("aeslinks.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
+aesnodes <- read.csv("aesnodes.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
+# aesnodes <- unique(aesnodes, incomparables = FALSE) # false issue
+
+aesNetwork <- data.frame(aeslinks$from, aeslinks$to)
+simpleNetwork(aesNetwork, fontFamily = "fantasy", zoom=T)
+
+forceNetwork(Links = aeslinks, Nodes = aesnodes, Source = "from",
+             Target = "to", Value = "weight", NodeID = "id",
+             Group = "com_solution", opacity = 1, zoom = T, bounded = T)
+
+forceNetwork(Links = aeslinks, Nodes = aesnodes, Source = "from",
+             Target = "to", Value = "weight", NodeID = "id",
+             Group = "group", opacity = 1, zoom = F, bounded = T)
+
+
 # with sans-serif 
 simpleNetwork(networkData, fontFamily = "sans-serif")
 
@@ -155,3 +173,12 @@ chordNetwork(Data = hairColourData,
              width = 500, 
              height = 500,
              colourScale = c("#000000", "#FFDD89", "#957244", "#F26223"))
+
+
+
+exnodes <- data.frame(id = 1:9, level = c(1,1,2,3,3, 4, 4, 4, 4))
+exedges <- data.frame(from = c(3, 3, 3, 3, 4, 4, 5, 5), 
+                    to = c(1, 2, 4, 5, 6, 7, 8, 9))
+
+visNetwork(exnodes, exedges) %>%
+  visHierarchicalLayout(direction = "LR")

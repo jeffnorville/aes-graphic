@@ -2,8 +2,8 @@
 title: "Notes to AES Figures"
 author: "Jeff Norville"
 theme: "simplex"
-#bibliography: C:/Users/Norville/Documents/Bibliotheque/INRA-2018.bib
-bibliography: "C:/Users/Jeff Norville/Documents/Mendeley Bibtex/INRA-2018.bib"
+bibliography: C:/Users/Norville/Documents/Bibliotheque/INRA-2018.bib
+#bibliography: "C:/Users/Jeff Norville/Documents/Mendeley Bibtex/INRA-2018.bib"
 output: 
   html_document:
     toc: yes
@@ -24,13 +24,19 @@ biblio-style: apalike
 
 ```{r Simple fig, message=FALSE, echo=FALSE}
 #library(readxl)
- library(igraph)
+#library(igraph)
 
 simplinks <- read.csv("../simplifylinks2.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
 simpnodes <- read.csv("../simplifynodes.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
 # net <- graph_from_data_frame(d=simplinks, vertices=simpnodes, directed=TRUE)
 # plot(net, layout = layout_with_lgl, label = simpnodes$short.definition)
 # plot(net)
+
+library(networkD3)
+simpNetwork <- data.frame(simplinks$from, simplinks$to)
+simpleNetwork(simpNetwork, fontFamily = "fantasy", zoom=T)
+
+
 
 library("visNetwork") 
 library(stringr)
@@ -61,7 +67,9 @@ vis.simplinks$smooth <- TRUE    # should the edges be curved?
 vis.simplinks$shadow <- FALSE    # edge shadow
 vis.simplinks$labelHighlightBold <- TRUE
 
-visNetwork(vis.simpnodes, vis.simplinks)
+visNetwork(vis.simpnodes, vis.simplinks) %>% 
+  visPhysics(solver = "forceAtlas2Based", 
+  forceAtlas2Based = list(gravitationalConstant = -10))
 
 ```
 
@@ -141,6 +149,7 @@ Same diagram with short names shown:
 
 ```{r All parts longer description, message=FALSE, echo=FALSE}
 
+#should test labels on challenge items as long.def?
 vis.aesnodes$label  <- aesnodes$short.definition
 
 visNetwork(vis.aesnodes, vis.aeslinks)
