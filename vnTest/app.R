@@ -2,7 +2,6 @@ require(shiny)
 require(visNetwork)
 require(stringr)
 
-
 server <- function(input, output) {
     output$aes_network <- renderVisNetwork({
         #setwd(dir = "C:/Users/Norville/Documents/R/aes-graphic/vnTest")
@@ -29,10 +28,10 @@ server <- function(input, output) {
 
         #clean up links
         vis.aeslinks$width <- aeslinks$weight*3 # line width
-        vis.aeslinks$dashes <- aeslinks$type #c(TRUE, FALSE)[aeslinks$type]
+        vis.aeslinks$dashes <- c(FALSE, FALSE, TRUE)[aeslinks$color] #aeslinks$color
         vis.aeslinks$color <- c("green", "red", "slategrey")[aeslinks$color]  
         
-        vis.aeslinks$smooth <- FALSE    # should the edges be curved?
+        vis.aeslinks$smooth <- TRUE    # should the edges be curved?
         vis.aeslinks$shadow <- FALSE    # edge shadow
         vis.aeslinks$labelHighlightBold <- TRUE
         

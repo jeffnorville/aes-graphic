@@ -32,9 +32,9 @@ simpnodes <- read.csv("../simplifynodes.csv", sep=";", header=TRUE, stringsAsFac
 # plot(net, layout = layout_with_lgl, label = simpnodes$short.definition)
 # plot(net)
 
-library(networkD3)
-simpNetwork <- data.frame(simplinks$from, simplinks$to)
-simpleNetwork(simpNetwork, fontFamily = "fantasy", zoom=T)
+# library(networkD3)
+# simpNetwork <- data.frame(simplinks$from, simplinks$to)
+# simpleNetwork(simpNetwork, fontFamily = "fantasy", zoom=T)
 
 
 
@@ -60,7 +60,7 @@ vis.simpnodes$borderWidth <- 1
 # vis.simpnodes$color.highlight.border <- "red"
 
 vis.simplinks$width <- simplinks$weight*3 # line width
-vis.simplinks$dashes <- simplinks$type #c(TRUE, FALSE)[aeslinks$type]
+vis.simplinks$dashes <- c(FALSE, FALSE, TRUE)[simplinks$color] 
 vis.simplinks$color <- c("green", "red", "slategrey")[simplinks$color]  
 #vis.simplinks$arrows <- "middle"
 vis.simplinks$smooth <- TRUE    # should the edges be curved?
@@ -122,9 +122,14 @@ vis.aesnodes$color <- str_replace(vis.aesnodes$color, "challenge", "lightgrey")
 vis.aesnodes$color <- str_replace(vis.aesnodes$color, "solution", "gold")
 
 vis.aesnodes$shadow <- TRUE # Nodes will drop shadow
+
+#vis.aesnodes$label["node.type"=="challenge"] <- aesnodes$short.definition
+
 vis.aesnodes$label  <- aesnodes$id
-#vis.aesnodes$label  <- aesnodes$short.definition
-vis.aesnodes$title  <- aesnodes$long.definition
+vis.aesnodes["label"=="n900"] <- "Biodiversity"
+vis.aesnodes["label"=="n906"] <- "Targeted biodiversity"
+
+vis.aesnodes$title  <- aesnodes$short.definition
 vis.aesnodes$borderWidth <- 1 
 
 # vis.aesnodes$color.border <- "black"
@@ -132,7 +137,7 @@ vis.aesnodes$borderWidth <- 1
 # vis.aesnodes$color.highlight.border <- "red"
 
 vis.aeslinks$width <- aeslinks$weight*3 # line width
-vis.aeslinks$dashes <- aeslinks$type #c(TRUE, FALSE)[aeslinks$type]
+vis.aeslinks$dashes <- c(FALSE, FALSE, TRUE)[aeslinks$color] 
 vis.aeslinks$color <- c("green", "red", "slategrey")[aeslinks$color]  
 #vis.aeslinks$arrows <- "middle"
 vis.aeslinks$smooth <- FALSE    # should the edges be curved?
@@ -200,6 +205,7 @@ vis.ccnodes$color.border <- "black"
 # edges
 vis.cclinks$color <- c("green", "red", "slategrey")[cclinks$color] 
 vis.cclinks$width <- cclinks$weight*4 # line width
+vis.cclinks$dashes <- c(FALSE, FALSE, TRUE)[cclinks$color] 
 vis.cclinks$smooth <- TRUE    # should the edges be curved?
 vis.cclinks$shadow <- FALSE    # edge shadow
 #vis.cclinks$color <- c("green", "red")[cclinks$color] #line color  
@@ -271,6 +277,8 @@ vis.varchoicenodes$color.border <- "black"
 # edges
 vis.varchoicelinks$width <- varchoicelinks$weight*4 # line width
 vis.varchoicelinks$color <- c("green", "red", "slategrey")[varchoicelinks$color] #  
+vis.varchoicelinks$dashes <- c(FALSE, FALSE, TRUE)[varchoicelinks$color] 
+
 # vis.varchoicelinks$arrows <- "middle" # arrows: 'from', 'to', or 'middle'
 vis.varchoicelinks$smooth <- TRUE    # should the edges be curved?
 vis.varchoicelinks$shadow <- FALSE    # edge shadow
@@ -328,6 +336,8 @@ vis.forestnodes$color.border <- "black"
 # edges
 vis.forestlinks$width <- forestlinks$weight*4 # line width
 vis.forestlinks$color <- c("green", "red", "slategrey")[forestlinks$color]
+vis.forestlinks$dashes <- c(FALSE, FALSE, TRUE)[forestlinks$color] 
+
 # vis.forestlinks$arrows <- "middle" # arrows: 'from', 'to', or 'middle'
 vis.forestlinks$smooth <- TRUE    # should the edges be curved?
 vis.forestlinks$shadow <- FALSE    # edge shadow
@@ -379,6 +389,8 @@ vis.iaesnodes$color.border <- "black"
 # edges
 vis.iaeslinks$color <- c("green", "red", "slategrey")[iaeslinks$color]
 vis.iaeslinks$width <- iaeslinks$weight*4 # line width
+vis.iaeslinks$dashes <- c(FALSE, FALSE, TRUE)[iaeslinks$color] 
+
 # NB arrows when weight is zero will cause confusion
 vis.iaeslinks$smooth <- TRUE    # should the edges be curved?
 vis.iaeslinks$shadow <- FALSE    # edge shadow
@@ -439,7 +451,9 @@ vis.soilnodes$color.border <- "black"
 
 # edges
 vis.soillinks$width <- soillinks$weight*4 # line width
-vis.soillinks$color <- c("green", "red", "slategrey")[soillinks$color] #"green"    # line color  
+vis.soillinks$color <- c("green", "red", "slategrey")[soillinks$color] #"green"    # line color
+vis.soillinks$dashes <- c(FALSE, FALSE, TRUE)[soillinks$color] 
+
 vis.soillinks$smooth <- TRUE    # should the edges be curved?
 vis.soillinks$shadow <- FALSE    # edge shadow
 
