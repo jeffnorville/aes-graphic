@@ -97,8 +97,8 @@ library(igraph)
 # aes_nodes <- read_excel("C:/Users/Norville/Dropbox/API-SMAL_Partage_Animation/Livrables/D1.1_List_of_AES_English.xlsm",
 #                         sheet = "nodes", skip = 1)
 
-aeslinks <- read.csv("../aeslinks3.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
-aesnodes <- read.csv("../aesnodes3.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
+aeslinks <- read.csv("../aeslinks5.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
+aesnodes <- read.csv("../aesnodes5.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
 # net <- graph_from_data_frame(d=aeslinks, vertices=aesnodes, directed=TRUE)
 # # plot(net, layout = layout_with_lgl, label = aesnodes$short.definition)
 # plot(net)
