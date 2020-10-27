@@ -1,8 +1,8 @@
 ## cleanup
 rm(list = ls()) 
 
-aeslinks <- read.csv("aeslinks.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
-aesnodes <- read.csv("aesnodes.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
+aeslinks <- read.csv("aeslinks5.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
+aesnodes <- read.csv("aesnodes5.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
 # aesnodes <- unique(aesnodes, incomparables = FALSE) # false issue
 
 ## igraph method

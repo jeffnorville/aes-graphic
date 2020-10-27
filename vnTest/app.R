@@ -7,8 +7,8 @@ server <- function(input, output) {
         #setwd(dir = "C:/Users/Norville/Documents/R/aes-graphic/vnTest")
         # rm(list=ls())
         
-        aeslinks <- read.csv("../aeslinks.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
-        aesnodes <- read.csv("../aesnodes.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
+        aeslinks <- read.csv("../aeslinks5.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
+        aesnodes <- read.csv("../aesnodes5.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
         vis.aesnodes <- aesnodes
         vis.aeslinks <- aeslinks #edges
         
@@ -28,8 +28,8 @@ server <- function(input, output) {
 
         #clean up links
         vis.aeslinks$width <- aeslinks$weight*3 # line width
-        vis.aeslinks$dashes <- c(FALSE, FALSE, TRUE)[aeslinks$color] #aeslinks$color
-        vis.aeslinks$color <- c("green", "red", "slategrey")[aeslinks$color]  
+        vis.aeslinks$dashes <- c(FALSE, FALSE, TRUE)[aeslinks$color] 
+        vis.aeslinks$color <- c("green", "red", "slategrey")[aeslinks$color] 
         
         vis.aeslinks$smooth <- TRUE    # should the edges be curved?
         vis.aeslinks$shadow <- FALSE    # edge shadow
@@ -38,17 +38,36 @@ server <- function(input, output) {
         
         visNetwork(vis.aesnodes, vis.aeslinks)
     })
+
+    observe({
+        visNetworkProxy("aes_network") %>%
+            visFocus(id = input$Focus, scale = 4)
+    })
     
     observe({
         visNetworkProxy("aes_network") %>%
             visNodes(color = input$color)
     })
     
-    
 }
 
 ui <- fluidPage(
+    fluidRow(
+        column(
+            width = 4,
+            selectInput("color", "Color :",
+                        c("blue", "red", "green")),
+            selectInput("Focus", "Focus on node :",
+                        c(unique(vis.aesnodes$id))) #vis.aesnodes$com_solution
+            # per https://www.rdocumentation.org/packages/visNetwork/versions/2.0.9/topics/visFocus
+            
+        ),
+        column(
+            width = 8,
+            
     visNetworkOutput("aes_network")
-)
+        )
+      )
+    )
 
 shinyApp(ui = ui, server = server)

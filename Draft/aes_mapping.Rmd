@@ -2,8 +2,8 @@
 title: "Notes to AES Figures"
 author: "Jeff Norville"
 theme: "simplex"
-bibliography: C:/Users/Norville/Documents/Bibliotheque/INRA-2018.bib
-#bibliography: "C:/Users/Jeff Norville/Documents/Mendeley Bibtex/INRA-2018.bib"
+# bibliography: C:/Users/Norville/Documents/Bibliotheque/INRA-2018.bib
+bibliography: "C:/Users/Jeff Norville/Documents/Mendeley Bibtex/INRA-2018.bib"
 output: 
   html_document:
     toc: yes
@@ -126,8 +126,8 @@ vis.aesnodes$shadow <- TRUE # Nodes will drop shadow
 #vis.aesnodes$label["node.type"=="challenge"] <- aesnodes$short.definition
 
 vis.aesnodes$label  <- aesnodes$id
-vis.aesnodes["label"=="n900"] <- "Biodiversity"
-vis.aesnodes["label"=="n906"] <- "Targeted biodiversity"
+# vis.aesnodes["label"=="n900"] <- "Biodiversity"
+# vis.aesnodes["label"=="n906"] <- "Targeted biodiversity"
 
 vis.aesnodes$title  <- aesnodes$short.definition
 vis.aesnodes$borderWidth <- 1 
