@@ -2,15 +2,21 @@ require(shiny)
 require(visNetwork)
 require(stringr)
 
+aeslinks <- read.csv("aeslinks5.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
+aesnodes <- read.csv("aesnodes5.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
+vis.aesnodes <- aesnodes
+vis.aeslinks <- aeslinks #edges
+
+
 server <- function(input, output) {
     output$aes_network <- renderVisNetwork({
         #setwd(dir = "C:/Users/Norville/Documents/R/aes-graphic/vnTest")
         # rm(list=ls())
         
-        aeslinks <- read.csv("../aeslinks5.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
-        aesnodes <- read.csv("../aesnodes5.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
-        vis.aesnodes <- aesnodes
-        vis.aeslinks <- aeslinks #edges
+        # aeslinks <- read.csv("../aeslinks5.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
+        # aesnodes <- read.csv("../aesnodes5.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
+        # vis.aesnodes <- aesnodes
+        # vis.aeslinks <- aeslinks #edges
         
         #customization
         vis.aesnodes$shape <- aesnodes$node.type
@@ -34,36 +40,46 @@ server <- function(input, output) {
         vis.aeslinks$smooth <- TRUE    # should the edges be curved?
         vis.aeslinks$shadow <- FALSE    # edge shadow
         vis.aeslinks$labelHighlightBold <- TRUE
-        
-        
-        visNetwork(vis.aesnodes, vis.aeslinks)
+
+        visNetwork(vis.aesnodes, vis.aeslinks, height="1200px", width="99%") %>%
+            visOptions(highlightNearest = list(enabled =TRUE, degree = 2, hover = T)) %>%
+            addFontAwesome()
     })
 
     observe({
         visNetworkProxy("aes_network") %>%
-            visFocus(id = input$Focus, scale = 4)
+            visFocus(id = input$Focus, scale = 2)
     })
     
-    observe({
-        visNetworkProxy("aes_network") %>%
-            visNodes(color = input$color)
-    })
+    # observe({
+    #     visNetworkProxy("aes_network") %>%
+    #         visNodes(color = input$color)
+    # })
     
 }
 
 ui <- fluidPage(
     fluidRow(
         column(
-            width = 4,
-            selectInput("color", "Color :",
-                        c("blue", "red", "green")),
-            selectInput("Focus", "Focus on node :",
-                        c(unique(vis.aesnodes$id))) #vis.aesnodes$com_solution
-            # per https://www.rdocumentation.org/packages/visNetwork/versions/2.0.9/topics/visFocus
-            
+            width = 2,
+            # selectInput("Highlight node", "Color :",
+            #             c("blue", "red", "green")),
+            selectInput("Focus", "Go to node :",
+                        list(`By challenge` = list(
+                                              "Biodiversity"="n900", 
+                                              "Targeted biodiversity"="n906",
+                                              "Crop protection"="n902",
+                                              "Reduce GHG Emissions"="n903",
+                                              "Reduce soil, water pollution"="n904",
+                                              "Production"="n901",
+                                              "Soil fertility"="n905"),
+                            `By Challenge or Node` = c(unique(vis.aesnodes$id)) #nb this is buggy, cant make proper list of nodes with manual list
+                        )
+                    )
+
         ),
         column(
-            width = 8,
+            width = 10,
             
     visNetworkOutput("aes_network")
         )
