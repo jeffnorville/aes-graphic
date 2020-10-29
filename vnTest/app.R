@@ -43,6 +43,7 @@ server <- function(input, output) {
 
         visNetwork(vis.aesnodes, vis.aeslinks, height="1200px", width="99%") %>%
             visOptions(highlightNearest = list(enabled =TRUE, degree = 2, hover = T)) %>%
+            visPhysics(enabled = FALSE) %>% 
             addFontAwesome()
     })
 
@@ -51,10 +52,11 @@ server <- function(input, output) {
             visFocus(id = input$Focus, scale = 2)
     })
     
-    # observe({
-    #     visNetworkProxy("aes_network") %>%
-    #         visNodes(color = input$color)
-    # })
+    observe({
+        visNetworkProxy("aes_network") %>%
+            visPhysics(enabled = input$physics) %>%
+            visNodes(color = input$color)
+    })
     
 }
 
@@ -62,8 +64,6 @@ ui <- fluidPage(
     fluidRow(
         column(
             width = 2,
-            # selectInput("Highlight node", "Color :",
-            #             c("blue", "red", "green")),
             selectInput("Focus", "Go to node :",
                         list(`By challenge` = list(
                                               "Biodiversity"="n900", 
@@ -75,7 +75,11 @@ ui <- fluidPage(
                                               "Soil fertility"="n905"),
                             `By Challenge or Node` = c(unique(vis.aesnodes$id)) #nb this is buggy, cant make proper list of nodes with manual list
                         )
-                    )
+                    ),
+            checkboxInput("physics",
+                          "Unconstrained",
+                          value = TRUE)
+            
 
         ),
         column(
