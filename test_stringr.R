@@ -101,12 +101,11 @@ distinct(aesnodes, id)
 
 
 ##simplified
-
-
-simplinks <- read.csv("../simplifylinks2.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
+library(igraph)
+simplinks <- read.csv("../simplifylinks3.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
 simpnodes <- read.csv("../simplifynodes.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
-# net <- graph_from_data_frame(d=simplinks, vertices=simpnodes, directed=TRUE)
-# plot(net, layout = layout_with_lgl, label = simpnodes$short.definition)
+ net <- graph_from_data_frame(d=simplinks, vertices=simpnodes, directed=TRUE)
+ plot(net, layout = layout_with_lgl, label = simpnodes$short.definition)
 # plot(net)
 
 # library(networkD3)
