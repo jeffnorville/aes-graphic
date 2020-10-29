@@ -98,3 +98,52 @@ library(dplyr)
 distinct(aesnodes, com_solution)
 distinct(aesnodes, id)
 
+
+
+##simplified
+
+
+simplinks <- read.csv("../simplifylinks2.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
+simpnodes <- read.csv("../simplifynodes.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
+# net <- graph_from_data_frame(d=simplinks, vertices=simpnodes, directed=TRUE)
+# plot(net, layout = layout_with_lgl, label = simpnodes$short.definition)
+# plot(net)
+
+# library(networkD3)
+# simpNetwork <- data.frame(simplinks$from, simplinks$to)
+# simpleNetwork(simpNetwork, fontFamily = "fantasy", zoom=T)
+
+
+
+library("visNetwork") 
+library(stringr)
+vis.simpnodes <- simpnodes
+vis.simplinks <- simplinks
+vis.simpnodes$shape <- simpnodes$node.type
+vis.simpnodes$shape <- str_replace(vis.simpnodes$shape, "challenge", "box")
+vis.simpnodes$shape <- str_replace(vis.simpnodes$shape, "solution", "ellipse")
+vis.simpnodes$color <- simpnodes$node.type
+vis.simpnodes$color <- str_replace(vis.simpnodes$color, "challenge", "lightgrey")
+vis.simpnodes$color <- str_replace(vis.simpnodes$color, "solution", "gold")
+
+vis.simpnodes$shadow <- TRUE # Nodes will drop shadow
+#vis.simpnodes$label  <- simpnodes$id
+vis.simpnodes$label  <- simpnodes$short.definition
+vis.simpnodes$title  <- simpnodes$long.definition
+vis.simpnodes$borderWidth <- 1 
+
+# vis.simpnodes$color.border <- "black"
+# vis.simpnodes$color.highlight.background <- "lightgreen"
+# vis.simpnodes$color.highlight.border <- "red"
+
+vis.simplinks$width <- simplinks$weight*3 # line width
+vis.simplinks$dashes <- c(FALSE, FALSE, TRUE)[simplinks$color] 
+vis.simplinks$color <- c("green", "red", "slategrey")[simplinks$color]  
+#vis.simplinks$arrows <- "middle"
+vis.simplinks$smooth <- TRUE    # should the edges be curved?
+vis.simplinks$shadow <- FALSE    # edge shadow
+vis.simplinks$labelHighlightBold <- TRUE
+
+visNetwork(vis.simpnodes, vis.simplinks) %>% 
+        visPhysics(solver = "forceAtlas2Based", 
+                   forceAtlas2Based = list(gravitationalConstant = -10))
