@@ -1,0 +1,475 @@
+---
+title: "Notes to AES Figures"
+author: "Jeff Norville"
+theme: "simplex"
+bibliography: C:/Users/Norville/Documents/Bibliotheque/INRA-2018.bib
+# bibliography: "C:/Users/Jeff Norville/Documents/Mendeley Bibtex/INRA-2018.bib"
+output: 
+  html_document:
+    toc: yes
+  pdf_document:
+    toc: yes
+link-citations: yes
+biblio-style: apalike
+---
+
+<!-- remember to install distill at home https://rstudio.github.io/distill/ -->
+
+
+
+
+## Simplified figure
+
+ 
+
+```{r Simple fig, message=FALSE, echo=FALSE}
+#library(readxl)
+#library(igraph)
+
+simplinks <- read.csv("../simplifylinks3.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
+simpnodes <- read.csv("../simplifynodes.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
+# net <- graph_from_data_frame(d=simplinks, vertices=simpnodes, directed=TRUE)
+# plot(net, layout = layout_with_lgl, label = simpnodes$short.definition)
+# plot(net)
+
+# library(networkD3)
+# simpNetwork <- data.frame(simplinks$from, simplinks$to)
+# simpleNetwork(simpNetwork, fontFamily = "fantasy", zoom=T)
+
+
+
+library("visNetwork") 
+library(stringr)
+vis.simpnodes <- simpnodes
+vis.simplinks <- simplinks
+vis.simpnodes$shape <- simpnodes$node.type
+vis.simpnodes$shape <- str_replace(vis.simpnodes$shape, "challenge", "box")
+vis.simpnodes$shape <- str_replace(vis.simpnodes$shape, "solution", "ellipse")
+vis.simpnodes$color <- simpnodes$node.type
+vis.simpnodes$color <- str_replace(vis.simpnodes$color, "challenge", "lightgrey")
+vis.simpnodes$color <- str_replace(vis.simpnodes$color, "solution", "gold")
+
+vis.simpnodes$shadow <- TRUE # Nodes will drop shadow
+#vis.simpnodes$label  <- simpnodes$id
+vis.simpnodes$label  <- simpnodes$short.definition
+vis.simpnodes$title  <- simpnodes$long.definition
+vis.simpnodes$borderWidth <- 1 
+
+# vis.simpnodes$color.border <- "black"
+# vis.simpnodes$color.highlight.background <- "lightgreen"
+# vis.simpnodes$color.highlight.border <- "red"
+
+vis.simplinks$width <- simplinks$weight*3 # line width
+vis.simplinks$dashes <- c(FALSE, FALSE, TRUE)[simplinks$color] 
+vis.simplinks$color <- c("green", "red", "slategrey")[simplinks$color]  
+#vis.simplinks$arrows <- "middle"
+vis.simplinks$smooth <- TRUE    # should the edges be curved?
+vis.simplinks$shadow <- FALSE    # edge shadow
+vis.simplinks$labelHighlightBold <- TRUE
+
+visNetwork(vis.simpnodes, vis.simplinks) %>% 
+  visPhysics(solver = "forceAtlas2Based", 
+  forceAtlas2Based = list(gravitationalConstant = -10))
+
+```
+
+
+## Mapping out the D1.1 Table
+
+I've changed to reading in a csv file instead of the Excel directly, as the objects in R really don't appreciate the spaces Excel sometimes obliges.
+
+Table A is now pulls values from Table D1.1, so a change to the text in D1.1 filters through Table A and, with an export, to these figures.
+
+Question for users:
+ - I find the arrows redundant to colors
+ - in some cases they even conflict
+ - the "node:link" architecture forces us to use "direction" (as complex relationships are allowed), but in instances with ? or 0 we don't want an arrow
+ - in those cases it's easier to just rely on color
+ 
+
+```{r AES Figure, message=FALSE, echo=FALSE}
+#library(readxl)
+library(igraph)
+
+
+# aes_links <- read_excel("C:/Users/Norville/Dropbox/API-SMAL_Partage_Animation/Livrables/D1.1_List_of_AES_English.xlsm",
+#                   sheet = "links", skip = 1)
+# aes_nodes <- read_excel("C:/Users/Norville/Dropbox/API-SMAL_Partage_Animation/Livrables/D1.1_List_of_AES_English.xlsm",
+#                         sheet = "nodes", skip = 1)
+
+aeslinks <- read.csv("../aeslinks5.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
+aesnodes <- read.csv("../aesnodes5.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
+# net <- graph_from_data_frame(d=aeslinks, vertices=aesnodes, directed=TRUE)
+# # plot(net, layout = layout_with_lgl, label = aesnodes$short.definition)
+# plot(net)
+
+```
+
+## visNetwork with node ids only 
+
+This layout is easier to zoom in and out to read labels, as well as make link directions more clear. Presenting all links in one diagram is a bit crowded.
+
+```{r All parts, message=FALSE, echo=FALSE}
+library("visNetwork") 
+library(stringr)
+vis.aesnodes <- aesnodes
+vis.aeslinks <- aeslinks
+vis.aesnodes$shape <- aesnodes$node.type
+vis.aesnodes$shape <- str_replace(vis.aesnodes$shape, "challenge", "box")
+vis.aesnodes$shape <- str_replace(vis.aesnodes$shape, "solution", "ellipse")
+vis.aesnodes$color <- aesnodes$node.type
+vis.aesnodes$color <- str_replace(vis.aesnodes$color, "challenge", "lightgrey")
+vis.aesnodes$color <- str_replace(vis.aesnodes$color, "solution", "gold")
+
+vis.aesnodes$shadow <- TRUE # Nodes will drop shadow
+
+#vis.aesnodes$label["node.type"=="challenge"] <- aesnodes$short.definition
+
+vis.aesnodes$label  <- aesnodes$id
+# vis.aesnodes["label"=="n900"] <- "Biodiversity"
+# vis.aesnodes["label"=="n906"] <- "Targeted biodiversity"
+
+vis.aesnodes$title  <- aesnodes$short.definition
+vis.aesnodes$borderWidth <- 1 
+
+# vis.aesnodes$color.border <- "black"
+# vis.aesnodes$color.highlight.background <- "lightgreen"
+# vis.aesnodes$color.highlight.border <- "red"
+
+vis.aeslinks$width <- aeslinks$weight*3 # line width
+vis.aeslinks$dashes <- c(FALSE, FALSE, TRUE)[aeslinks$color] 
+vis.aeslinks$color <- c("green", "red", "slategrey")[aeslinks$color]  
+#vis.aeslinks$arrows <- "middle"
+vis.aeslinks$smooth <- FALSE    # should the edges be curved?
+vis.aeslinks$shadow <- FALSE    # edge shadow
+vis.aeslinks$labelHighlightBold <- TRUE
+
+
+
+visNetwork(vis.aesnodes, vis.aeslinks)
+```
+
+
+Same diagram with short names shown:
+
+```{r All parts longer description, message=FALSE, echo=FALSE}
+
+#should test labels on challenge items as long.def?
+vis.aesnodes$label  <- aesnodes$short.definition
+
+visNetwork(vis.aesnodes, vis.aeslinks)
+```
+
+
+
+## Crop / Culture Choice
+```{r Crop Choice, message=FALSE, echo=FALSE}
+library(dplyr)
+# ccnodes <- read.csv("../cropchoicenodes.csv", sep=";", header=TRUE, as.is = TRUE) # stringsAsFactors = FALSE
+# cclinks <- read.csv("../cropchoicelinks.csv", sep=";", header=TRUE, as.is = TRUE)
+
+ccnodes <- select(filter(aesnodes,  com_solution %in% c("Crop choice",
+                                                   "Biodiversity", 
+                                                   "Targeted biodiversity", 
+                                                   "Crop protection", 
+                                                   "GHG Emissions", 
+                                                   "Pollution", 
+                                                   "Soil fertility",
+                                                   "Production")),
+               c(id, node.type, com_solution, short.definition, long.definition, node.type.id))
+
+cclinks <- select(filter(aeslinks,  group == "Crop choice"),
+               c(from, to, group, challenge, label, color, weight))
+
+# head(aesnodes)
+
+vis.cclinks <- cclinks
+vis.ccnodes <- ccnodes
+
+# visNetwork(vis.ccnodes, vis.cclinks) 
+vis.ccnodes$shadow <- FALSE # Nodes will drop shadow
+vis.ccnodes$title  <- ccnodes$long.definition
+vis.ccnodes$label  <- ccnodes$short.definition
+vis.ccnodes$borderWidth <- 1 # Node border width
+vis.ccnodes$shape <- ccnodes$node.type
+vis.ccnodes$shape <- str_replace(vis.ccnodes$shape, "challenge", "box")
+vis.ccnodes$shape <- str_replace(vis.ccnodes$shape, "solution", "ellipse")
+vis.ccnodes$color <- ccnodes$node.type
+vis.ccnodes$color <- str_replace(vis.ccnodes$color, "challenge", "lightgrey")
+vis.ccnodes$color <- str_replace(vis.ccnodes$color, "solution", "gold")
+
+vis.ccnodes$color.border <- "black"
+# vis.ccnodes$color.highlight.background <- "lightgreen"
+# vis.ccnodes$color.highlight.border <- "red"
+
+# edges
+vis.cclinks$color <- c("green", "red", "slategrey")[cclinks$color] 
+vis.cclinks$width <- cclinks$weight*4 # line width
+vis.cclinks$dashes <- c(FALSE, FALSE, TRUE)[cclinks$color] 
+vis.cclinks$smooth <- TRUE    # should the edges be curved?
+vis.cclinks$shadow <- FALSE    # edge shadow
+#vis.cclinks$color <- c("green", "red")[cclinks$color] #line color  
+
+visNetwork(vis.ccnodes, vis.cclinks) 
+
+
+```
+
+
+### Choice of cultures, impact on nitrate loading
+
+
+Relative to mineral fertilization, @Tahat2020 cites studies on organic farms showing 50\% increases in nitrogen supply and sequestration capacity through planting of leguminous crops such as peas or alfalfa. 
+
+A mix of legume and livestock production is identified in @Luscher2014 as an optimal production system to meet increasing demand for meat in the European markets. Specifically a 30 - 50\% legume crop is found to augment forage, reduce inorganic fertilizer dependency, and aid in mitigating \ce{CO2} emissions.
+
+In a study of three fertilizer systems (conventional, legume-fed cattle manure, and legume-biomass based), nitrogen leaching was found to be highest in the conventional system by 50\% (@Drinkwater1998). 
+
+
+### Choice of cultures, impact on biodiversity
+
+In their 2011 study of the influence on European farmland species diversity decline, @Kleijn2011 posed four questions (paraphrased):
+    1. How do conservation initiatives impact species?
+    2. Do local conservation initiatives scale up to national or continental trends, and how?
+    3. Can we distinguish population-level response from behavioral response to conservation initiatives?
+    4. Are conservation initiatives effective for target species in changing agricultural landscapes?
+
+
+Of the few N American efforts in our review of upscaling from the farm plot to the landscape, @Wilson2017 divided agricultural land use in two, separating forage (hay, alfalfa) from all other arable crops (including oilseeds, cereals, grains and pulses). 
+
+
+
+
+
+## Increase varietal diversity
+```{r Varietal choice, message=FALSE, echo=FALSE}
+varchoicenodes <- select(filter(aesnodes,  com_solution %in% c("Varietal choice",
+                                                   "Biodiversity", 
+                                                   "Targeted biodiversity", 
+                                                   "Crop protection", 
+                                                   "GHG Emissions", 
+                                                   "Pollution", 
+                                                   "Soil fertility",
+                                                   "Production")),
+               c(id, node.type, com_solution, short.definition, long.definition, node.type.id))
+
+varchoicelinks <- select(filter(aeslinks,  group == "Varietal choice"),
+               c(from, to, group, challenge, label, color, weight))
+
+vis.varchoicenodes <- varchoicenodes
+vis.varchoicelinks <- varchoicelinks
+
+vis.varchoicenodes$shape <- varchoicenodes$node.type
+vis.varchoicenodes$shape <- str_replace(vis.varchoicenodes$shape, "challenge", "box")
+vis.varchoicenodes$shape <- str_replace(vis.varchoicenodes$shape, "solution", "ellipse")
+vis.varchoicenodes$color <- varchoicenodes$node.type
+vis.varchoicenodes$color <- str_replace(vis.varchoicenodes$color, "challenge", "lightgrey")
+vis.varchoicenodes$color <- str_replace(vis.varchoicenodes$color, "solution", "gold")
+vis.varchoicenodes$shadow <- FALSE # Nodes will drop shadow
+vis.varchoicenodes$title  <- varchoicenodes$long.definition
+vis.varchoicenodes$label  <- varchoicenodes$short.definition
+vis.varchoicenodes$borderWidth <- 1 # Node border width
+vis.varchoicenodes$color.background <- c("gold", "grey")[varchoicenodes$node.type]
+vis.varchoicenodes$color.border <- "black"
+# vis.varchoicenodes$color.highlight.background <- "lightgreen"
+# vis.varchoicenodes$color.highlight.border <- "red"
+
+# edges
+vis.varchoicelinks$width <- varchoicelinks$weight*4 # line width
+vis.varchoicelinks$color <- c("green", "red", "slategrey")[varchoicelinks$color] #  
+vis.varchoicelinks$dashes <- c(FALSE, FALSE, TRUE)[varchoicelinks$color] 
+
+# vis.varchoicelinks$arrows <- "middle" # arrows: 'from', 'to', or 'middle'
+vis.varchoicelinks$smooth <- TRUE    # should the edges be curved?
+vis.varchoicelinks$shadow <- FALSE    # edge shadow
+
+visNetwork(vis.varchoicenodes, vis.varchoicelinks)
+
+```
+
+
+### When discussing Varietal diversity / intra-plot genetics (varietal association)
+
+Rethinking criteria for measuring performance of varieties will be an important change; per @Barot2017, ecologists and agronomists currently use tools to measure interactions between varieties rather than opportunities of synergies.
+
+"Mixture performance should therefore be compared to the performance of the pure variety that would have been chosen by the farmer in this field."
+
+Examples: Diversity of plant, invertebrate (arthropod) and animal (ex farm birds) life.
+
+
+
+## Forest
+```{r Forest, message=FALSE, echo=FALSE}
+library(dplyr)
+library(stringr)
+forestnodes <- select(filter(aesnodes,  com_solution %in% c("Forest",
+                                                   "Biodiversity", 
+                                                   "Targeted biodiversity", 
+                                                   "Crop protection", 
+                                                   "GHG Emissions", 
+                                                   "Pollution", 
+                                                   "Soil fertility",
+                                                   "Production")),
+               c(id, node.type, com_solution, short.definition, long.definition, node.type.id))
+
+forestlinks <- select(filter(aeslinks,  group == "Forest"),
+               c(from, to, group, challenge, label, color, weight))
+
+vis.forestnodes <- forestnodes
+vis.forestlinks <- forestlinks
+
+vis.forestnodes$shape <- forestnodes$node.type
+vis.forestnodes$shape <- str_replace(vis.forestnodes$shape, "challenge", "box")
+vis.forestnodes$shape <- str_replace(vis.forestnodes$shape, "solution", "ellipse")
+vis.forestnodes$color <- forestnodes$node.type
+vis.forestnodes$color <- str_replace(vis.forestnodes$color, "challenge", "lightgrey")
+vis.forestnodes$color <- str_replace(vis.forestnodes$color, "solution", "gold")
+
+vis.forestnodes$shadow <- FALSE # Nodes will drop shadow
+vis.forestnodes$title  <- forestnodes$long.definition
+vis.forestnodes$label  <- forestnodes$short.definition
+vis.forestnodes$borderWidth <- 1 # Node border width
+vis.forestnodes$color.border <- "black"
+# vis.forestnodes$color.highlight.background <- "lightgreen"
+# vis.forestnodes$color.highlight.border <- "red"
+
+# edges
+vis.forestlinks$width <- forestlinks$weight*4 # line width
+vis.forestlinks$color <- c("green", "red", "slategrey")[forestlinks$color]
+vis.forestlinks$dashes <- c(FALSE, FALSE, TRUE)[forestlinks$color] 
+
+# vis.forestlinks$arrows <- "middle" # arrows: 'from', 'to', or 'middle'
+vis.forestlinks$smooth <- TRUE    # should the edges be curved?
+vis.forestlinks$shadow <- FALSE    # edge shadow
+
+visNetwork(vis.forestnodes, vis.forestlinks)
+# %>%  visEdges(color = c("green", "red")[forestlinks$color])
+
+```
+
+Sparing larger forests provides increased biodiversity, with exception of bird species (shelter) @Edwards2015
+
+
+
+## Infrastructure AE
+```{r Infrastructure AE, message=FALSE, echo=FALSE}
+library(dplyr)
+library(stringr)
+iaesnodes <- select(filter(aesnodes,  com_solution %in% c("Infrastructure AE",
+                                                   "Biodiversity", 
+                                                   "Targeted biodiversity", 
+                                                   "Crop protection", 
+                                                   "GHG Emissions", 
+                                                   "Pollution", 
+                                                   "Soil fertility",
+                                                   "Production")),
+               c(id, node.type, com_solution, short.definition, long.definition, node.type.id))
+
+iaeslinks <- select(filter(aeslinks,  group == "Infrastructure AE"),
+               c(from, to, group, challenge, label, color, weight))
+
+vis.iaesnodes <- iaesnodes
+vis.iaeslinks <- iaeslinks
+
+vis.iaesnodes$shape  <- iaesnodes$node.type
+vis.iaesnodes$shape <- str_replace(vis.iaesnodes$shape, "challenge", "box")
+vis.iaesnodes$shape <- str_replace(vis.iaesnodes$shape, "solution", "ellipse")
+
+#vis.iaesnodes$color.background <- c("gold", "grey")[iaesnodes$node.type]
+vis.iaesnodes$color <- iaesnodes$node.type
+vis.iaesnodes$color <- str_replace(vis.iaesnodes$color, "challenge", "lightgrey")
+vis.iaesnodes$color <- str_replace(vis.iaesnodes$color, "solution", "gold")
+
+vis.iaesnodes$shadow <- TRUE # Nodes will drop shadow
+vis.iaesnodes$title  <- iaesnodes$long.definition
+vis.iaesnodes$label  <- iaesnodes$short.definition
+vis.iaesnodes$borderWidth <- 1 # Node border width
+vis.iaesnodes$color.border <- "black"
+
+# edges
+vis.iaeslinks$color <- c("green", "red", "slategrey")[iaeslinks$color]
+vis.iaeslinks$width <- iaeslinks$weight*4 # line width
+vis.iaeslinks$dashes <- c(FALSE, FALSE, TRUE)[iaeslinks$color] 
+
+# NB arrows when weight is zero will cause confusion
+vis.iaeslinks$smooth <- TRUE    # should the edges be curved?
+vis.iaeslinks$shadow <- FALSE    # edge shadow
+
+visNetwork(vis.iaesnodes, vis.iaeslinks)
+
+
+```
+
+### Sparing vs sharing
+
+According to @Fischer2014, a reframing of the 2005 sharing / sparing framework by Green et al (@Green2005) is due and could look like this (from his list of Recommendations):
+
+    1. Focus on commodity production, not food production, in land scarcity analyses
+    2. Recognize limitations: ``\dots partial-trade off analyses cannot directly inform real-world decisions without knowledge on social preferences''
+    3. Scale issues: they need to be addressed ore explicitely, and more carefully considered.
+    4. Critique has been plentiful, alternatives few: ``A potentially promising approach could be to assess agricultural landscapes as social–ecological systems'' (review how Ostrom 1990 analyzed common property resource systems and its durability)
+
+
+
+
+## Working the soil
+```{r Working the soil, message=FALSE, echo=FALSE}
+
+soilnodes <- select(filter(aesnodes,  com_solution %in% c("Working the soil",
+                                                   "Biodiversity", 
+                                                   "Targeted biodiversity", 
+                                                   "Crop protection", 
+                                                   "GHG Emissions", 
+                                                   "Pollution", 
+                                                   "Soil fertility",
+                                                   "Production")),
+               c(id, node.type, com_solution, short.definition, long.definition, node.type.id))
+
+soillinks <- select(filter(aeslinks,  group == "Working the soil"),
+               c(from, to, group, challenge, label, color, weight))
+
+vis.soilnodes <- soilnodes
+vis.soillinks <- soillinks
+
+vis.soilnodes$shape  <- soilnodes$node.type
+vis.soilnodes$shape <- str_replace(vis.soilnodes$shape, "challenge", "box")
+vis.soilnodes$shape <- str_replace(vis.soilnodes$shape, "solution", "ellipse")
+
+#vis.soilnodes$color.background <- c("gold", "grey")[soilnodes$node.type]
+vis.soilnodes$color <- soilnodes$node.type
+vis.soilnodes$color <- str_replace(vis.soilnodes$color, "challenge", "lightgrey")
+vis.soilnodes$color <- str_replace(vis.soilnodes$color, "solution", "gold")
+
+vis.soilnodes$shadow <- FALSE # Nodes will drop shadow
+vis.soilnodes$title  <- soilnodes$long.definition
+vis.soilnodes$label  <- soilnodes$short.definition
+vis.soilnodes$borderWidth <- 1 # Node border width
+vis.soilnodes$color.background <- c("gold", "grey")[soilnodes$node.type]
+vis.soilnodes$color.border <- "black"
+# vis.soilnodes$color.highlight.background <- "lightgreen"
+# vis.soilnodes$color.highlight.border <- "red"
+
+# edges
+vis.soillinks$width <- soillinks$weight*4 # line width
+vis.soillinks$color <- c("green", "red", "slategrey")[soillinks$color] #"green"    # line color
+vis.soillinks$dashes <- c(FALSE, FALSE, TRUE)[soillinks$color] 
+
+vis.soillinks$smooth <- TRUE    # should the edges be curved?
+vis.soillinks$shadow <- FALSE    # edge shadow
+
+visNetwork(vis.soilnodes, vis.soillinks) 
+
+```
+
+
+
+
+## Discussion
+
+
+
+=======
+
+## References
+
+
