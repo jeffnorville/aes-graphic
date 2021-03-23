@@ -10,8 +10,9 @@ vis.links <- links #edges
 
 server <- function(input, output) {
     output$aes_network <- renderVisNetwork({
-        #setwd(dir = "C:/Users/Norville/Documents/R/aes-graphic/aesNetSimple")
-        # rm(list=ls())
+      #setwd(dir = "C:/Users/Norville/Documents/R/aes-graphic/aesNetSimple")
+      #setwd(dir = "C:/Rprojects/aes-graphic/aesNetSimple")
+      # rm(list=ls())
         
         # aeslinks <- read.csv("../aeslinks5.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
         # aesnodes <- read.csv("../aesnodes5.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
