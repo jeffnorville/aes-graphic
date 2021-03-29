@@ -2,8 +2,8 @@
 title: "Notes to AES Figures"
 author: "Jeff Norville"
 theme: "simplex"
-# bibliography: C:/Users/Norville/Documents/Bibliotheque/INRA-2018.bib
-bibliography: "C:/Users/Jeff Norville/Documents/Mendeley Bibtex/INRA-2018.bib"
+bibliography: C:/Users/Norville/Documents/Bibliographies/INRA-2018.bib
+# bibliography: "C:/Users/Jeff Norville/Documents/Mendeley Bibtex/INRA-2018.bib"
 output: 
   html_document:
     toc: yes

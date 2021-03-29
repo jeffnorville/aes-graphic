@@ -2,14 +2,18 @@ require(shiny)
 require(visNetwork)
 require(stringr)
 
+setwd(dir = "C:/RProjects/aes-graphic/aesNetSimple")
 links <- read.csv("simplifylinks3.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
-nodes <- read.csv("simplifynodes5.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
-vis.nodes <- nodes
-vis.links <- links #edges
+nodes <- read.csv("simplifynodes.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
+
+
+vis.aesnodes <- nodes
+vis.aeslinks <- links #edges
 
 
 server <- function(input, output) {
     output$aes_network <- renderVisNetwork({
+      
       #setwd(dir = "C:/Users/Norville/Documents/R/aes-graphic/aesNetSimple")
       #setwd(dir = "C:/Rprojects/aes-graphic/aesNetSimple")
       # rm(list=ls())

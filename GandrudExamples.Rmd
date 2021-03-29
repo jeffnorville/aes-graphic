@@ -58,10 +58,24 @@ sankeyNetwork(Links = Energy$links, Nodes = Energy$nodes, Source = "source",
 
 # diagonalNetwork
 
+<!-- wtf here -->
+
 ```{r}
+library(RCurl)
+library(rjson)
 Flare <- RCurl::getURL("https://gist.githubusercontent.com/mbostock/4063550/raw/a05a94858375bd0ae023f6950a2b13fac5127637/flare.json")
+
+Flare <- getURL("https://gist.githubusercontent.com/mbostock/4063550/raw/a05a94858375bd0ae023f6950a2b13fac5127637/flare.json")
+
 Flare <- rjson::fromJSON(Flare)
 diagonalNetwork(List = Flare, fontSize = 10, opacity = 0.9, margin=0)
+
+
+URL <- paste0("https://gist.githubusercontent.com/mbostock/4063550/raw/",
+              "a05a94858375bd0ae023f6950a2b13fac5127637/flare.json")
+Flare <- jsonlite::fromJSON(URL)
+diagonalNetwork(List = Flare, fontSize = 10, opacity = 0.9, margin=0)
+
 ```
 
 # radialNetwork
