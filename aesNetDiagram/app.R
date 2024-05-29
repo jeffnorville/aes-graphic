@@ -41,7 +41,8 @@ server <- function(input, output) {
         vis.aeslinks$shadow <- FALSE    # edge shadow
         vis.aeslinks$labelHighlightBold <- TRUE
 
-        visNetwork(vis.aesnodes, vis.aeslinks, height="1200px", width="99%") %>%
+        # 1200px # height="2400px", width="1600px"
+        visNetwork(vis.aesnodes, vis.aeslinks) %>% 
             visOptions(highlightNearest = list(enabled =TRUE, degree = 2, hover = T)) %>%
             visPhysics(enabled = FALSE) %>% 
             addFontAwesome()
@@ -49,7 +50,7 @@ server <- function(input, output) {
 
     observe({
         visNetworkProxy("aes_network") %>%
-            visFocus(id = input$Focus, scale = 2)
+            visFocus(id = input$Focus, scale = 3)
     })
     
     observe({
@@ -90,4 +91,4 @@ ui <- fluidPage(
       )
     )
 
-shinyApp(ui = ui, server = server)
+shinyApp(ui = ui, server = server, options = list(height = 2600))

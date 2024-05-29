@@ -5,9 +5,9 @@ theme: "simplex"
 bibliography: C:/Users/Norville/Documents/Bibliographies/INRA-2018.bib
 # bibliography: "C:/Users/Jeff Norville/Documents/Mendeley Bibtex/INRA-2018.bib"
 output: 
-  html_document:
-    toc: yes
   pdf_document:
+    toc: yes
+  html_document:
     toc: yes
 link-citations: yes
 biblio-style: apalike
@@ -24,7 +24,7 @@ biblio-style: apalike
 
 ```{r Simple fig, message=FALSE, echo=FALSE}
 #library(readxl)
-#library(igraph)
+library(igraph)
 
 simplinks <- read.csv("../simplifylinks3.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
 simpnodes <- read.csv("../simplifynodes.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
